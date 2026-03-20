@@ -12,3 +12,6 @@ class Solution:
             
             if nums[i] != 0 and nums[j] == 0:
                 i += 1
+            
+            if nums[i] != 0 and nums[j] != 0:
+                i += 1
