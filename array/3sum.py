@@ -12,19 +12,17 @@ class Solution:
                     l += 1
                     r -= 1
                 
-                if nums[l] + nums[r] < - nums[i]:
+                if nums[l] + nums[r] > - nums[i]:
                     r -= 1
                 
-                if nums[l] + nums[r] > - nums[i]:
+                if nums[l] + nums[r] < - nums[i]:
                     l += 1
                     
             l, r = 0, len(nums) - 1
-            
+
         res = []
         for ele in output:
             if ele not in res:
                  res.append(ele)
         
         return res
-
-        return 
