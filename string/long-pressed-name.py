@@ -12,7 +12,8 @@ class Solution:
                 else:
                     if name[i-1] != typed[j]:
                         return False
-            else:
+                        
+            else:   
                 if typed[j] != name[i-1]:
                     return False
             
