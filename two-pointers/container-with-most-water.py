@@ -4,13 +4,13 @@ class Solution:
         first_area = (r - l) * min(height[l], height[r])
         area = []
         area.append(first_area)
-        
+
         while l < r:
             if height[l] < height[r]:
                 new_area = (r - l) * min(height[l], height[r])
                 l += 1
             
-            if height[l] >= height[r]:
+            else:
                 new_area = (r - l) * min(height[l], height[r])
                 r -= 1
 
