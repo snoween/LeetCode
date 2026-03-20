@@ -10,5 +10,5 @@ class Solution:
                 nums[i], nums[j] = nums[j], nums[i] 
                 i += 1
             
-        
-
+            if nums[i] != 0 and nums[j] == 0:
+                i += 1
