@@ -4,7 +4,7 @@ class Solution:
 
         if name[0] != typed[0]:
             return False
-            
+
         for j in range(len(typed)):
             if i < len(name):
                 if name[i] == typed[j]:
@@ -16,4 +16,4 @@ class Solution:
                 if typed[j] != name[i-1]:
                     return False
             
-        return i == len(name)
+        return True
