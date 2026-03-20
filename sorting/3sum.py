@@ -19,6 +19,12 @@ class Solution:
                     l += 1
                     
             l, r = 0, len(nums) - 1
-        print(output)
+            
+        res = []
+        for ele in output:
+            if ele not in res:
+                 res.append(ele)
+        
+        return res
 
-        return output
+        return 
