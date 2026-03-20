@@ -1,10 +1,9 @@
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        i = 0
-
         if not s:
             return True
 
+        i = 0
         for char in t:
             if i < len(s) and char == s[i]:
                 i += 1
