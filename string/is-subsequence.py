@@ -4,6 +4,9 @@ class Solution:
         li_t = list(t)
         i = 0
 
+        if not s:
+            return True
+
         for j, char in enumerate(li_t):
             if char == li_s[i] and i < len(s) - 1:
                 i += 1
