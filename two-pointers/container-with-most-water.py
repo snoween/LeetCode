@@ -5,11 +5,11 @@ class Solution:
 
         while l < r:
             if height[l] < height[r]:
-                area = (r - l) * min(height[l], height[r])
+                area = (r - l) * height[l]
                 l += 1
             
             else:
-                area = (r - l) * min(height[l], height[r])
+                area = (r - l) * height[r]
                 r -= 1
 
             output = max(init_area, area)
