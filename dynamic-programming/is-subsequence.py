@@ -9,7 +9,3 @@ class Solution:
                 i += 1
         
         return i == len(s)
-
-            
-
-
