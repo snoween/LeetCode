@@ -16,10 +16,10 @@ class Solution:
                 k = len(nums) - 1
 
             for j in range(i+1, len(nums) - 1):
+                k = j + 1
                 while k < len(nums) and nums[i] + nums[j] > nums[k]:
                     print(nums[i], nums[j], nums[k])
                     k += 1
-               
+                
                 count += k - j - 1
-
         return count
