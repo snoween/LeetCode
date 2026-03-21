@@ -9,5 +9,5 @@ class Solution:
                 while k < len(nums) and nums[i] + nums[j] > nums[k]:
                     k += 1
                 count += k - j - 1
-                
-        return count
+
+        return count if count > 0 else 0
