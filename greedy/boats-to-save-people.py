@@ -3,7 +3,7 @@ class Solution:
         n.sort()
         count = 0
         l , r = 0, len(n) - 1
-        
+
         while l <= r:
             if n[l] + n[r] > limit:
                 r -= 1
@@ -11,6 +11,7 @@ class Solution:
             else:
                 r -= 1
                 l += 1
+                
             count += 1
         
         return count
