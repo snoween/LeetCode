@@ -11,8 +11,7 @@ class Solution:
             else:
                 r -= 1
                 l += 1
-                
+
             count += 1
         
         return count
-
