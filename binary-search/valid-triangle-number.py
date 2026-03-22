@@ -9,6 +9,6 @@ class Solution:
                 while k < len(nums) and nums[i] + nums[j] > nums[k]:
                     k += 1
                 
-                num_triangle += (k - 1) - j
+                num_triangle += max(0, (k - 1) - j)
         
         return num_triangle
