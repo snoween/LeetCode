@@ -11,15 +11,23 @@ class Solution:
                 if b > a + 1 and nums[b] == nums[b-1]:
                     continue
 
-                d = len(nums) - 1
-                for c in range(b + 1, len(nums)):
-                    if c > b + 1 and nums[c] == nums[c-1]:
-                        continue
-
-                    while c < d and nums[a] + nums[b] + nums[c] + nums[d] > target:
+                c, d = b + 1, len(nums) - 1
+                while c< d:
+                    if nums[a] + nums[b] + nums[c] + nums[d] < target:
+                        c += 1
+                    
+                    elif nums[a] + nums[b] + nums[c] + nums[d] > target:
+                        d -= 1
+                
+                    else:
+                        result.append([nums[a], nums[b], nums[c], nums[d]])
+                        c += 1
                         d -= 1
                     
-                    if c < d and nums[a] + nums[b] + nums[c] + nums[d] == target:
-                        result.append([nums[a], nums[b], nums[c], nums[d]])
+                        while c < d and nums[c] == nums[c-1]:
+                            c += 1
+                        
+                        while c < d and nums[d] == nums[d-1]:
+                            d -= 1
 
         return result
