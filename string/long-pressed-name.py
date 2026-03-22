@@ -1,20 +1,13 @@
 class Solution:
     def isLongPressedName(self, name: str, typed: str) -> bool:
-        i, j = 0, 0
+        i = 0
 
-        if name[0] != typed[0]:
-            return False
-            
-        for j in range(len(typed)):
-            if i < len(name):
-                if name[i] == typed[j]:
-                    i += 1
-                else:
-                    if name[i-1] != typed[j]:
-                        return False
-                        
-            else:   
-                if typed[j] != name[i-1]:
-                    return False
+        for j, char in enumerate(typed):
+            if i < len(name) and name[i] == char:
+                i += 1
+            elif i > 0 and name[i-1] == char:
+                continue
+            else:
+                return False
             
         return i == len(name)
