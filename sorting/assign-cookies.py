@@ -9,6 +9,6 @@ class Solution:
         for i in range(len(g)):               
             if j < len(s) and s[j] >= g[i]:
                 count_cookies += 1
-            j += 1
+                j += 1
             
         return count_cookies
