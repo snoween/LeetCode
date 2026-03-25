@@ -6,7 +6,7 @@ class Solution:
         output = [0 for _ in range(len(nums))]
         i, k, v = 0, 0, 0
 
-        while k < len(even) and v < len(odd):
+        while i < len(output):
             output[i] = even[k]
             k += 1
             i += 1
