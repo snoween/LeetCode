@@ -4,14 +4,15 @@ class Solution:
         odd = [num for num in nums if num %2 != 0]
 
         output = [0 for _ in range(len(nums))]
-        k, v = 0, 0
+        i, k, v = 0, 0, 0
 
-        for i in range(len(output)):
-            if i % 2 == 0:
-                output[i] = even[k]
-                k += 1
-            else:
-                output[i] = odd[v]
-                v += 1
+        while k < len(even) and v < len(odd):
+            output[i] = even[k]
+            k += 1
+            i += 1
+
+            output[i] = odd[v]
+            v += 1
+            i += 1
         
         return output
