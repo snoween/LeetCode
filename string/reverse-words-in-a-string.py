@@ -7,6 +7,5 @@ class Solution:
             li_words[l], li_words[r] = li_words[r], li_words[l]
             l += 1
             r -= 1
-        
 
         return " ".join(li_words)
