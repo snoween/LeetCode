@@ -4,6 +4,7 @@ class Solution:
 
         for i, num in enumerate(nums):
             k = i + 1
+            
             while k < len(nums):
                 if nums[k] == num:
                     count += 1
