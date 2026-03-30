@@ -16,5 +16,3 @@ class Solution:
                 r -= 1
             
         return ''.join(li_s)
-        
-
