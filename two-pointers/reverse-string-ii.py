@@ -6,8 +6,8 @@ class Solution:
         li_s = list(s)
        
         for i in range(0, len(li_s), 2*k):
-            if k < len(li_s):
-                l, r = i, i + (k - 1)
+            l, r = i, i + (k - 1)
+            if r < len(li_s):
                 while l < r and r < len(li_s):
                     li_s[l], li_s[r] = li_s[r], li_s[l]
                     l += 1
