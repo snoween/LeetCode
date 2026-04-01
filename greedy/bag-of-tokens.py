@@ -3,7 +3,7 @@ class Solution:
         score = 0
         tokens.sort()
         
-        if power < tokens[0]:
+        if len(tokens) > 0 and power < tokens[0]:
             return score
         
         l, r = 0, len(tokens) - 1
