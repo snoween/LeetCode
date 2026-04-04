@@ -6,7 +6,7 @@ class Solution:
         
         for i in range(len(seats)):
             if seats[i] == 1 and seats[k] == 1:
-                dist = i - ((i + k) // 2)
+                dist = (i - k) // 2
                 k = i
             
             elif seats[i] == 1 and seats[k] == 0:
