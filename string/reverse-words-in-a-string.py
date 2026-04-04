@@ -1,6 +1,6 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
-        li_words = [word for word in s.split()]
+        li_words = list(s.split())
         l, r = 0, len(li_words) - 1
         
         while l < r:
