@@ -4,8 +4,9 @@ class Solution:
         l = 0
         current_sum = 0
 
-        for r in range(len(nums)):
-            current_sum += nums[r]
+        for r, num in enumerate(nums):
+            current_sum += num
+            
             while current_sum >= target:
                 current_sum -= nums[l]
                 ans = min(ans, r-l+1)
