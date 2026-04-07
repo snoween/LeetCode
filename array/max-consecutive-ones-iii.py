@@ -4,8 +4,8 @@ class Solution:
         count_0 = 0
         max_one = 0
 
-        for r in range(len(nums)):
-            if nums[r] == 0:
+        for r, num in enumerate(nums):
+            if num == 0:
                 count_0 += 1
 
             while count_0 > k:
