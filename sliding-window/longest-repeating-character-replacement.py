@@ -2,7 +2,14 @@ class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         s_counter = Counter(s)
         l = 0
-        char = 'A' if s_counter['A'] < s_counter['B'] else 'B'
+        if len(s_counter.keys()) < 2:
+            return s_counter.values()
+            
+        min_char = min(s_counter.values())
+        char = ''
+        for key in s_counter.keys():
+            if s_counter[key] == min_char:
+                char = key
         count = 0
         max_char = 0
 
