@@ -4,7 +4,6 @@ class Solution:
         current_sum = sum(nums[:k])
         
         max_sum = current_sum if len(current_dict.keys()) >= m else 0
-        valid_array = False
 
         for r in range(k, len(nums)):  
             current_dict[nums[r]] += 1
@@ -17,6 +16,5 @@ class Solution:
 
             if len(current_dict.keys()) >= m:       
                 max_sum = max(max_sum, current_sum)
-                valid_aaray = True
 
-        return max_sum if not valid_array else 0
+        return max_sum
