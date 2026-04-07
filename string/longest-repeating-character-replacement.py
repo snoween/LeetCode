@@ -3,7 +3,7 @@ class Solution:
         s_counter = Counter(s)
         l = 0
         if len(s_counter.keys()) < 2:
-            return s_counter.values()[0]
+            return max(s_counter.values())
 
         min_char = min(s_counter.values())
         char = ''
