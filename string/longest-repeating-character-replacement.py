@@ -3,8 +3,8 @@ class Solution:
         s_counter = Counter(s)
         l = 0
         if len(s_counter.keys()) < 2:
-            return s_counter.values()
-            
+            return s_counter.values()[0]
+
         min_char = min(s_counter.values())
         char = ''
         for key in s_counter.keys():
