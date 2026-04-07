@@ -10,18 +10,14 @@ class Solution:
             current_dict[nums[r]] += 1
             current_dict[nums[l]] -= 1
            
-            if current_dict[nums[l]] == 0:
+            if current_dict[nums[l]] == 0:      # Remove key if has dict[key] = 0
                 del current_dict[nums[l]]
-       
-            if len(current_dict.keys()) >= m:    
-                current_sum = current_sum + nums[r] - nums[l]
-                l += 1
+                
+            current_sum = current_sum + nums[r] - nums[l]
+            l += 1
+
+            if len(current_dict.keys()) >= m:       
                 max_sum = max(max_sum, current_sum)
                 valid_aaray = True
-
-            else:
-                current_sum = current_sum + nums[r] - nums[l]
-                valid_array = False
-                l += 1
 
         return max_sum if not valid_array else 0
