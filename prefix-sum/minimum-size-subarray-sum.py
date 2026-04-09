@@ -4,8 +4,8 @@ class Solution:
         curr_sum = 0
 
         l = 0
-        for r in range(len(nums)):
-            curr_sum += nums[r]
+        for r, num in enumerate(nums):
+            curr_sum += num
             
             while curr_sum >= target:
                 curr_sum -= nums[l]
