@@ -4,7 +4,7 @@ class Solution:
 
         if k == 0:
             return nums
-        elif (2* k + 1) <= len(nums):       # Requirement to get a valid output
+        elif (2* k + 1) > len(nums):       # Requirement to get a valid output
             return output
 
         # If valid input
