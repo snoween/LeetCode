@@ -6,6 +6,7 @@ class Solution:
         l = 0
         for r in range(len(nums)):
             curr_sum += nums[r]
+            
             while curr_sum >= target:
                 curr_sum -= nums[l]
                 best_len = min(best_len, r-l+1)
