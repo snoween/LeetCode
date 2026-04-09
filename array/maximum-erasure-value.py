@@ -5,14 +5,14 @@ class Solution:
         curr_num = set()
        
         l = 0
-        for r in range(len(nums)):
-            while nums[r] in curr_num:
+        for r, num in enumerate(nums):
+            while num in curr_num:
                 curr_num.remove(nums[l])
                 curr_sum -= nums[l]
                 l += 1
             
-            curr_num.add(nums[r])
-            curr_sum += nums[r]
+            curr_num.add(num)
+            curr_sum += num
 
             best_sum = max(best_sum, curr_sum)
         
