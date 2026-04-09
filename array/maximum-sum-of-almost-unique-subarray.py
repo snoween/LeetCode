@@ -3,7 +3,7 @@ class Solution:
         current_dict = Counter(nums[:k])
         current_sum = sum(nums[:k])
         
-        max_sum = current_sum if len(current_dict.keys()) >= m else 0
+        max_sum = current_sum if len(current_dict) >= m else 0
 
         for r in range(k, len(nums)):  
             current_dict[nums[r]] += 1
@@ -14,7 +14,7 @@ class Solution:
 
             current_sum = current_sum + nums[r] - nums[r-k]
 
-            if len(current_dict.keys()) >= m:       
+            if len(current_dict) >= m:       
                 max_sum = max(max_sum, current_sum)
 
         return max_sum
