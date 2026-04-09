@@ -1,20 +1,19 @@
 class Solution:
     def maximumUniqueSubarray(self, nums: List[int]) -> int:
-        l = 0
-        seen = set()
         best_sum = 0
-        sum_subarray = 0
-        for r, num in enumerate(nums):
-            
-            while num in seen:
-                seen.remove(nums[l])
-                sum_subarray -= nums[l]
+        curr_sum = 0
+        curr_num = set()
+       
+        l = 0
+        for r in range(len(nums)):
+            while nums[r] in curr_num:
+                curr_num.remove(nums[l])
+                curr_sum -= nums[l]
                 l += 1
+            
+            curr_num.add(nums[r])
+            curr_sum += nums[r]
 
-            sum_subarray += num
-            seen.add(num)
-
-            best_sum = max(best_sum, sum_subarray)
+            best_sum = max(best_sum, curr_sum)
         
         return best_sum
-
