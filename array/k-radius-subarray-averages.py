@@ -2,7 +2,7 @@ class Solution:
     def getAverages(self, nums: List[int], k: int) -> List[int]:
         if k == 0:
             return nums
-        elif len(nums) <= k:
+        elif not len(nums) > 2*k + 1:
             return [-1 for _ in range(len(nums))]
 
         print(len(nums))
