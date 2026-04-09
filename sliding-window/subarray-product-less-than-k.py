@@ -3,9 +3,12 @@ class Solution:
         count = 0
         l = 0
         curr_prod = nums[0]
-        for r in range(len(nums)):
-            while curr_prod > k and l < len(nums):
-                curr_prod = curr_prod / nums[l]
+        for r in range(1, len(nums)):
+            print(curr_prod)
+            while curr_prod >= k and l < len(nums):
+                print(curr_prod, nums[l])
+                curr_prod = curr_prod // nums[l]
+                print(nums[l], curr_prod)
                 l += 1
             
             curr_prod *= nums[r]
