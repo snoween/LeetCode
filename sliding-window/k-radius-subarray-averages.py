@@ -4,11 +4,11 @@ class Solution:
 
         if k == 0:
             return nums
-        elif (2* k + 1) > len(nums):       # Requirement to get a valid output
+        elif (2*k + 1) > len(nums):       # Requirement to get a valid output
             return output
 
         # If valid input
-        curr_sum = sum(nums[:2*k+1])
+        curr_sum = sum(nums[:2*k + 1])
         output[k] = curr_sum // (2*k + 1)
 
         for r in range(k+1, len(nums)-k):
