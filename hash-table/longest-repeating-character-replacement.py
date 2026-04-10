@@ -24,4 +24,4 @@ class Solution:
             len_char = find_max_len(char)
             ans = max(ans, len_char)
 
-        return ans
+        return ans if len(set_s) > 1 else len(s)
