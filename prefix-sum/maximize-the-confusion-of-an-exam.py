@@ -1,9 +1,10 @@
 class Solution:
     def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
         def find_max_len(input_char: str) -> int:
-            l = 0
             init_dict = Counter()
             best_len = 0
+            
+            l = 0
             for r, char in enumerate(answerKey):
                 init_dict[char] += 1
 
