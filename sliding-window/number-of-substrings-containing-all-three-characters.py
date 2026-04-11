@@ -1,6 +1,5 @@
 class Solution:
     def numberOfSubstrings(self, s: str) -> int:
-        target = Counter('abc')
         l = 0
         count = 0
         curr_dict = Counter()
