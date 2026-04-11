@@ -8,8 +8,10 @@ class Solution:
         for r, char in enumerate(s):
             curr_dict[char] += 1
 
-            while curr_dict['a'] >= 1 and curr_dict['b'] >= 1 and curr_dict['c'] >= 1:
+            while len(curr_dict) == 3:
                 curr_dict[s[l]] -= 1
+                if curr_dict[s[l]] == 0:
+                    del curr_dict[s[l]]
                 count += (len(s) - r)
                 l += 1
             
