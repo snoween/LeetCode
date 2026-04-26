@@ -7,11 +7,9 @@ class Solution:
 
         for i in range(n):
             prefix_0[i] = (prefix_0[i-1] if i > 0 else 0) + (1 if s[i] == '0' else 0)
-            print(prefix_0)
 
         for i in range(n-1, -1, -1):
             suffix_1[i] = (suffix_1[i+1] if i < n-1 else 0) + (1 if s[i] == '1' else 0)
-            print(suffix_1)
         
         for i in range(n-1):
             max_output = max(max_output, prefix_0[i] + suffix_1[i+1])
