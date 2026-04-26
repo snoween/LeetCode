@@ -8,7 +8,7 @@ class Solution:
             max_num = max(nums[:i])
             min_num = min(nums[i:])
             
-            if max_num - min_num < k:
+            if max_num - min_num <= k:
                 min_idx = min(min_idx, i)
         
         return min_idx if min_idx != inf else -1
