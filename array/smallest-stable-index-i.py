@@ -3,7 +3,6 @@ class Solution:
         n = len(nums)
         prefix_max = [0] * n
         suffix_min = [0] * n
-        min_idx = inf
 
         # Get prefix max
         for i in range(n):
@@ -15,6 +14,6 @@ class Solution:
         
         for i in range(n):
             if prefix_max[i] - suffix_min[i] <= k:
-                min_idx = min(min_idx, i)
+                return i
         
-        return min_idx if min_idx != inf else -1
+        return -1
