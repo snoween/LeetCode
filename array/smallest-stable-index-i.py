@@ -5,9 +5,11 @@ class Solution:
         suffix_min = [0] * n
         min_idx = inf
 
+        # Get prefix max
         for i in range(n):
             prefix_max[i] = max(prefix_max[i-1] if i > 0 else -inf, nums[i])
         
+        # Get suffix min
         for j in range(n-1, -1, -1):
             suffix_min[j] = min(suffix_min[j+1] if j < n-1 else inf, nums[j])
         
