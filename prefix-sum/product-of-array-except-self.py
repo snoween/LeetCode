@@ -15,7 +15,6 @@ class Solution:
             if j < n-1:
                 suf[j] = suf[j+1] * nums[j+1]
 
-        print(pref, suf)
         # Get the output[i] = suf[i] * pre[j]
         for i in range(n):
             output[i] = pref[i] * suf[i]
