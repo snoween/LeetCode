@@ -11,7 +11,6 @@ class Solution:
         
         for i in range(m):
             for j in range(n):
-                element = prod // grid[i][j]
-                output[i][j] = element if element % mod != 0 else 0
+                output[i][j] = (prod // grid[i][j]) % mod
 
         return output
