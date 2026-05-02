@@ -11,8 +11,8 @@ class Solution:
         for j in range(n-1, -1, -1):
             suffix[j] = (suffix[j+1] if j < n-1 else 0) + nums[j]
         
-        for i in range(n):
-            if prefix[i] >= suffix[j]:
+        for i in range(n-1):
+            if prefix[i] >= suffix[i+1]:
                 count += 1
         
         return count
