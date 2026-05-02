@@ -13,9 +13,9 @@ class Solution:
             suffix[i] = ((suffix[i] % mod) + char_dict[s[i]]) % mod
             
             if suffix[i] == 0:
-                output.append(s[i])
+                output.append('z')
                 continue
-
+                
             for key, val in char_dict.items():
                 if suffix[i] == val:
                     output.append(key)
