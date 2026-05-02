@@ -1,6 +1,6 @@
 class Solution:
     def shiftingLetters(self, s: str, shifts: List[int]) -> str:
-        char_dict = {chr(ord('a') + i): i+1 for i in range(26)}
+        char_dict = {chr(ord('a') + i): i for i in range(26)}
         n = len(shifts)
         suffix = [0] * n
         output = []
@@ -13,7 +13,7 @@ class Solution:
             suffix[i] = ((suffix[i] % mod) + char_dict[s[i]]) % mod
             
             if suffix[i] == 0:
-                output.append('z')
+                output.append('a')
                 continue
                 
             for key, val in char_dict.items():
