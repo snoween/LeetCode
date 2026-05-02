@@ -11,7 +11,7 @@ class Solution:
 
         for i in range(n):
             suffix[i] = ((suffix[i] % mod) + char_dict[s[i]]) % mod
-                
+     
             for key, val in char_dict.items():
                 if suffix[i] == val:
                     output.append(key)
