@@ -10,8 +10,13 @@ class Solution:
             suffix[i] = (suffix[i+1] if i < n-1 else 0) + shifts[i] 
 
         for i in range(n):
-            suffix[i] = (suffix[i] % mod + char_dict[s[i]]) 
-            print(suffix[i])
+            print(1, suffix[i])
+            suffix[i] = (suffix[i] + char_dict[s[i]]) % mod
+            
+            if suffix[i] == 0:
+                output.append(s[i])
+                continue
+                
             for key, val in char_dict.items():
                 if suffix[i] == val:
                     output.append(key)
