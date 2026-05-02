@@ -4,13 +4,13 @@ class Solution:
         start_val = 1
         pref = defaultdict(lambda: start_val)
 
-
         for i in range(n):
             pref[i] = pref[i-1] + nums[i] 
         
         del pref[-1]
-
-        if min(pref.values()) < 1:
-            start_val = abs(start_val) + abs(min(pref.values())) + 1
+        
+        min_val = min(pref.values())
+        if min_val < 1:
+            start_val = abs(start_val) + abs(min_val) + 1
         
         return start_val
