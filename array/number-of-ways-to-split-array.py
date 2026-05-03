@@ -7,7 +7,6 @@ class Solution:
         total = prefix[-1]
         
         for i in range(n-1):
-            if prefix[i] >= total - prefix[i]:
-                count += 1
+            count += int(prefix[i] >= total - prefix[i])
         
         return count
