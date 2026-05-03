@@ -3,7 +3,7 @@ class Solution:
         n = len(nums)
         prefix = [0] * n
         # tao 1 dict co nghia la "remainder: idx dau tien ma co remainder nay"
-        remain_dict = defaultdict(int)
+        remain_dict = defaultdict(int, {0: -1})
         # dung for loop de tinh  prefix
         for i in range(n):
             # tinh mod cua prefix
