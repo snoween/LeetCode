@@ -1,14 +1,13 @@
 class NumMatrix:
 
     def __init__(self, matrix: List[List[int]]):
-        self.mat = matrix
-        m, n = len(self.mat), len(self.mat[0])
+        m, n = len(matrix), len(matrix[0])
         self.prefix = [[0] * (n+1) for i in range(m+1)]
         
         for i in range(m):
             for j in range(n):
                 self.prefix[i+1][j+1] = (
-                self.mat[i][j]
+                matrix[i][j]
                 + self.prefix[i][j+1]
                 + self.prefix[i+1][j]
                 - self.prefix[i][j]
