@@ -15,7 +15,5 @@ class Solution:
                 odd_idx[curr] = i
             # count += dict[curr - k + 1] - dict[curr - k] + 1
             count += odd_idx[curr - k + 1] - odd_idx[curr - k] 
-            print(curr, count)
 
-        print(odd_idx)
         return count
