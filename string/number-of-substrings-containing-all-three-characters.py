@@ -1,17 +1,19 @@
 class Solution:
     def numberOfSubstrings(self, s: str) -> int:
+        freq = defaultdict(int)
         l = 0
         count = 0
-        curr_dict = Counter()
-
-        for r, char in enumerate(s):
-            curr_dict[char] += 1
-
-            while len(curr_dict) == 3:
-                curr_dict[s[l]] -= 1
-                if curr_dict[s[l]] == 0:
-                    del curr_dict[s[l]]
-                count += (len(s) - r)
+        # for loop
+        for char in s:
+            # Update freq 
+            freq[char] += 1
+            # while key a,b,c >= 1
+            while freq['a'] >= 1 and freq['b'] >= 1 and freq['c'] >= 1:
+                freq[s[l]] -= 1
+                # update left
                 l += 1
             
+            # update count += l
+            count += l
+    
         return count
