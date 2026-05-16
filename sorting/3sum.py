@@ -19,10 +19,15 @@ class Solution:
             
             while l < r:
                 print(target, nums[l], nums[r])
-                if nums[l] + nums[r] + target == 0:
-                    output.append([target, nums[l], nums[r]])
+                if nums[l] + nums[r] > -target:
+                    r -= 1
+
+                elif nums[l] + nums[r] < -target:
+                    l += 1
                 
-                l += 1
-                r -= 1
+                else:
+                    output.append([target, nums[l], nums[r]])
+                    l += 1
+                    r -= 1
         
         return output
