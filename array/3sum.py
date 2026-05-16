@@ -1,11 +1,13 @@
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
         nums.sort()
+
         seen = set()
         target = 0
+
         output_seen = set()
         output = []
-        # for loop i
+
         for i, num in enumerate(nums):
             # check if target in set seen or not
             if num in seen:
@@ -13,6 +15,7 @@ class Solution:
             else:
                 seen.add(num)
                 target = num
+                
             # Set up l, r
             l = i+1
             r = len(nums) - 1
