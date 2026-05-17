@@ -17,8 +17,7 @@ class Solution:
         # Calculate max distance between 2 number 1s
         for i, num in enumerate(location):
             if num == 1 and i != first_heater:
-                dist = (i - first_heater) // 2
-                print(dist)
+                dist = (i - first_heater-1) // 2
                 first_heater = i
                 best_radius = max(best_radius, dist)
 
@@ -27,4 +26,3 @@ class Solution:
             best_radius = max(best_radius, dist)
 
         return best_radius
-        # best_radius = max_dist / 2
