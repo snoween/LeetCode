@@ -9,6 +9,7 @@ class Solution:
             freq[char] += 1
             max_freq = max(max_freq, freq[char])
 
+            # The char needs to be switched > k -> increase left
             while (r-l+1) - max_freq > k:
                 freq[answerKey[l]] -= 1
                 l += 1
