@@ -1,13 +1,18 @@
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
-        m, n = len(s), len(p)
-        curr_win = s[:n]
-        target_dict = Counter(p)
-        output = [0] if Counter(curr_win) == target_dict else []
+        len_s, len_p = len(s), len(p)
+        target = Counter(p)
+        curr_arr = Counter(s[:len_p])
+        output = [0] if curr_arr == target else []
 
-        for i in range(1, m):
-            curr_win = s[i:i+n]
-            if Counter(curr_win) == target_dict:
-                output.append(i)
+        left = 0
+        for right in range(len_p, len_s):
+            curr_arr[s[right]] += 1
+            curr_arr[s[left]] -= 1
+
+            if curr_arr == target:
+                output.append(right-len_p+1)
+            
+            left += 1
         
-        return output  
+        return output
