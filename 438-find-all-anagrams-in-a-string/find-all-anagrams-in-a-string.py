@@ -11,7 +11,7 @@ class Solution:
             curr_arr[s[left]] -= 1
 
             if curr_arr == target:
-                output.append(right-len_p+1)
+                output.append(left+1)
             
             left += 1
         
