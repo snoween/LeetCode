@@ -1,17 +1,14 @@
 class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
         freq = defaultdict(int)
-
-        for i, num in enumerate(nums):
-            if num not in freq:
-                freq[num] = i
-            
-            else:
-                if i - freq[num] <= k:
+        
+        for right, num in enumerate(nums):
+            if num in freq:
+                if right - freq[num] <= k:
                     return True
                 else:
-                    freq[num] = i
+                    freq[num] = right
+                    
+            freq[num] = right
         
         return False
-
-        
