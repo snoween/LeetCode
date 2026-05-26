@@ -9,7 +9,7 @@ class Solution:
         prev = None
 
         while curr:
-            next_node = curr.next   # Save next node before changing direction
+            next_node = curr.next
             curr.next = prev
             prev = curr
             curr = next_node
