@@ -6,7 +6,6 @@
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         curr = head
-        prev = None
         length = 1
         count = 1
 
