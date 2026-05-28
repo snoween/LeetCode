@@ -15,8 +15,8 @@ class Solution:
             curr = curr.next
         
         curr = head
-        while count != (length // 2):
+        while length > 1 and count != (length // 2):
             curr = curr.next
             count += 1
         
-        return curr.next
+        return curr.next if length > 1 else head
