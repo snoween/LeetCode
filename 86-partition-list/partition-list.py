@@ -16,12 +16,12 @@ class Solution:
             if head.val < x:
                 curr_left.next = head
                 curr_left = curr_left.next
-                head = head.next
             
             else:
                 curr_right.next = head
                 curr_right = curr_right.next
-                head = head.next
+                
+            head = head.next
         
         curr_left.next = head_right.next
         curr_right.next = None
