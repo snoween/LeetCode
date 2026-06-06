@@ -22,7 +22,7 @@ class Solution:
             m = l + (r - l) // 2
             if matrix[ans][m] == target:
                 return True
-            if matrix[ans][m] < target:
+            if matrix[ans][m] > target:
                 r = m - 1
             else:
                 l = m + 1
