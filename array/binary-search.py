@@ -3,7 +3,7 @@ class Solution:
         l = 0
         r = len(nums) - 1
 
-        while l < r:
+        while l <= r:
             m = l + ((r - l) // 2)
 
             if nums[m] == target:
