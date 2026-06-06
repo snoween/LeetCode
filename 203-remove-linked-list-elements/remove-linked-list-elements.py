@@ -12,7 +12,7 @@ class Solution:
             if head.val != val:
                 curr.next = head
                 curr = curr.next
-               
+            
             head = head.next
         
         curr.next = None
