@@ -12,10 +12,11 @@ class Solution:
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-            if fast == slow:
+
+            if fast == slow:    # Check if cycle or not
                 slow = head
 
-                while slow != fast:
+                while slow != fast:     # Find where slow meets fast
                     slow = slow.next
                     fast = fast.next
                 
