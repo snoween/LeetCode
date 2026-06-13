@@ -6,5 +6,6 @@ class Solution:
 
             if isLeftEmpty and ifRightEmpty and num == 0:
                 n -= 1
-
-        return n <= 0    
+                if n == 0:
+                    return True
+        return False   
