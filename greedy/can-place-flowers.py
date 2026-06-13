@@ -7,4 +7,4 @@ class Solution:
             if isLeftEmpty and ifRightEmpty and num == 0:
                 n -= 1
 
-        return n == 0    
+        return n <= 0    
