@@ -9,9 +9,8 @@ class Solution:
             if ele not in brac_pairs:
                 open_brac.append(ele)
             else:
-                if open_brac and brac_pairs[ele] == open_brac[-1]:
-                    open_brac.pop()
-                else:
+                if open_brac and brac_pairs[ele] != open_brac[-1]:
                     return False
-        
-        return True
+                open_brac.pop()
+
+        return not open_brac
