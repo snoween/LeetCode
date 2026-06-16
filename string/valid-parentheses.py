@@ -3,14 +3,14 @@ class Solution:
         brac_pairs = {'}': '{',
                     ')': '(',
                     ']': '['}
-        open_brac = []
+        stack = []
 
         for ele in s:
             if ele not in brac_pairs:
-                open_brac.append(ele)
+                stack.append(ele)
             else:
-                if not open_brac or brac_pairs[ele] != open_brac[-1]:
+                if not stack or brac_pairs[ele] != stack[-1]:
                     return False
-                open_brac.pop()
+                stack.pop()
 
-        return not open_brac
+        return not stack
