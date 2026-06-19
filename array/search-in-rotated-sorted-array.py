@@ -1,24 +1,23 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        l = 0
-        r = len(nums) - 1
+        left = 0
+        right = len(nums) - 1
 
-        while l <= r:
-            m = l + (r - l) // 2
-            if nums[m] == target:
-                return m
-                
-            if nums[m] <= nums[r]: # m -> r tang dan
-                if nums[m] < target <= nums[r]:
-                    l = m + 1
+        while left <= right:
+            middle = left + (right - left) // 2
+            print(middle)
+            if nums[middle] == target:
+                return middle
+
+            if nums[middle] <= nums[right]:
+                if nums[middle] < target <= nums[right]:
+                    left = middle + 1
                 else:
-                    r = m -1
-            
+                    right = middle - 1
             else:
-                if nums[l] <= target <= nums[m]:
-                    r = m - 1
-                
+                if nums[left] <= target < nums[middle]:
+                    right = middle - 1
                 else:
-                    l = m + 1
-        
+                    left = middle + 1
+
         return -1
