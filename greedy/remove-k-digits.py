@@ -5,16 +5,14 @@ class Solution:
 
         stack = []
         for digit in num:
-            if stack and digit < stack[-1] and k > 0:
-                print(digit, stack[-1])
+            while stack and digit < stack[-1] and k > 0:
                 stack.pop()
-                print(stack)
                 k -= 1
             stack.append(digit)
 
         if k > 0:
             stack = stack[:-k]
-            
+
         result = int(''.join(stack)) 
         return str(result)
         
