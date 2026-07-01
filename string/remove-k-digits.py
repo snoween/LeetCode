@@ -5,7 +5,7 @@ class Solution:
 
         stack = []
         for digit in num:
-            while stack and digit < stack[-1] and k > 0:
+            while len(stack) > 0 and digit < stack[-1] and k > 0:
                 stack.pop()
                 k -= 1
             stack.append(digit)
@@ -13,6 +13,5 @@ class Solution:
         if k > 0:
             stack = stack[:-k]
 
-        result = int(''.join(stack)) 
-        return str(result)
+        return "".join(stack).lstrip("0") or "0"
         
