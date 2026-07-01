@@ -1,8 +1,5 @@
 class Solution:
     def removeKdigits(self, num: str, k: int) -> str:
-        if len(num) == k:
-            return '0'
-
         stack = []
         for digit in num:
             while len(stack) > 0 and digit < stack[-1] and k > 0:
