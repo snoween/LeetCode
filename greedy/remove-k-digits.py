@@ -2,7 +2,7 @@ class Solution:
     def removeKdigits(self, num: str, k: int) -> str:
         if len(num) == k:
             return '0'
-            
+
         stack = []
         for digit in num:
             if stack and digit < stack[-1] and k > 0:
@@ -11,7 +11,10 @@ class Solution:
                 print(stack)
                 k -= 1
             stack.append(digit)
-        
-        result = int(''.join(stack))
+
+        if k > 0:
+            stack = stack[:-k]
+            
+        result = int(''.join(stack)) 
         return str(result)
         
