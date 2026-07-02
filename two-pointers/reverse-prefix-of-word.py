@@ -9,10 +9,12 @@ class Solution:
             if char == ch and ifFirstTime:
                 stack.append(char)
                 right = len(stack) - 1
+
                 while left < right:
                     stack[left], stack[right] = stack[right], stack[left]
                     left += 1
                     right -= 1
+                    
                 ifFirstTime = False
             else:
                 stack.append(char)
