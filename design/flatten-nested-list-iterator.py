@@ -41,6 +41,7 @@ class NestedIterator:
                     self.stack.append(subList[i])
         
         return False
+        
 # Your NestedIterator object will be instantiated and called as such:
 # i, v = NestedIterator(nestedList), []
 # while i.hasNext(): v.append(i.next())
