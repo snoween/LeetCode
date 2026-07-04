@@ -34,11 +34,11 @@ class NestedIterator:
             if top.isInteger():
                 return True
             else:   # if a sub list
-                self.stack.pop()
-                sub_list = top.getList()
+                self.stack.pop()    # Remove sublist
+                subList = top.getList()
 
-                for i in range(len(sub_list) - 1, -1, -1):
-                    self.stack.append(sub_list[i])
+                for i in range(len(subList) - 1, -1, -1):
+                    self.stack.append(subList[i])
         
         return False
 # Your NestedIterator object will be instantiated and called as such:
