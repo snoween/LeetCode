@@ -18,4 +18,4 @@ class Solution:
             if diff != 0:
                 heapq.heappush(stones_minus, diff)
         
-        return -stones_minus[0]
+        return -stones_minus[0] if stones_minus else 0
