@@ -6,7 +6,6 @@ class Solution:
 
         gifts_minus = [-num for num in gifts]
         heapq.heapify(gifts_minus)
-        total = 0
 
         for i in range(k):
             if gifts_minus:
