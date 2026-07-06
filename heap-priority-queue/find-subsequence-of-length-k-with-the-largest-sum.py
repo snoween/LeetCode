@@ -1,17 +1,14 @@
 class Solution:
     def maxSubsequence(self, nums: List[int], k: int) -> List[int]:
         # Max heap -> Take sum of the first k numbers
-        nums_minus = [-num for num in nums]
+        nums_minus = []
+        for i, num in enumerate(nums):
+            nums_minus.append([-num, i])
         heapq.heapify(nums_minus)
         result = []
 
         for i in range(k):
-            result.append(-heapq.heappop(nums_minus))
+            index = nums_minus[i][1]
+            result.append([-heapq.heappop(nums_minus[i]), index])
         
-        left, right = 0, len(result) - 1
-        while left < right:
-            result[left], result[right] = result[right], result[left]
-            left += 1
-            right -= 1
-        
-        return result
+        return [item[0] for item in sorted(result, key=lambda x: x[1])]
