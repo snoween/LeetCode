@@ -31,4 +31,4 @@ class Solution:
             if max_num - min_num != 0:
                 max_length = max(max_length, right - left + 1)
         
-        return max_length if max_length > 1 else 0
+        return max_length 
