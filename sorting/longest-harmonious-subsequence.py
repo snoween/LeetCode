@@ -23,10 +23,12 @@ class Solution:
                 max_num = num
             elif num < min_num:
                 min_num = num
-            while left < right and max_num - min_num != 1:
+            
+            while left < right and max_num - min_num > 1:
                 left += 1
                 min_num = nums[left]
-            
-            max_length = max(max_length, right - left + 1)
+
+            if max_num - min_num != 0:
+                max_length = max(max_length, right - left + 1)
         
         return max_length if max_length > 1 else 0
