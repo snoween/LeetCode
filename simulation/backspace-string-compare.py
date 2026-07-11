@@ -10,10 +10,10 @@ class Solution:
                     if backspaceCount > 0:
                         backspaceCount -= 1
                     else:
-                        return (s[index - 1], index)
+                        return (s[index], index)
                 index -= 1
 
-            return (s[index], index)
+            return ("", -1)
             
         i, j = len(s) - 1, len(t) - 1
         while i > 0 or j > 0:
