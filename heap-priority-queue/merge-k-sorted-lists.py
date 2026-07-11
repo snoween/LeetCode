@@ -16,8 +16,10 @@ class Solution:
             if head:
                 heap.append((head.val, i))
         
+        heapq.heapify(heap)
         while heap:
             _, index = heapq.heappop(heap)
+
             tail.next = lists[index]
             tail = tail.next
 
