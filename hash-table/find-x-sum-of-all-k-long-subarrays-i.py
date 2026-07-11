@@ -44,8 +44,10 @@ class Solution:
         for right in range(k, len(nums)):
             freq[nums[right]] += 1
             freq[nums[left]] -= 1
+            
             if freq[nums[left]] == 0:
                 del freq[nums[left]]
+
             left += 1
             output.append(calculateSum(freq, x))
             
