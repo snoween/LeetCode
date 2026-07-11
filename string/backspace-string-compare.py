@@ -16,7 +16,7 @@ class Solution:
             return ("", -1)
             
         i, j = len(s) - 1, len(t) - 1
-        while i > 0 or j > 0:
+        while i > 0 and j > 0:
             sChar, i = getNextCharacter(s, i)
             tChar, j = getNextCharacter(t, j)
 
