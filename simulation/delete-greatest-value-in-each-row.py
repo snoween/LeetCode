@@ -13,16 +13,18 @@ class Solution:
         for arr in grid:
             arr.sort()
         
-        
         for col in range(n - 1, -1, -1):
             stack = []
-            heapq.heapify(stack)
             for row in range(m):
-                heapq.heappush(stack, -grid[row][col])
-                
-            ans += heapq.heappop(stack)
+                if stack and grid[row][col] > stack[-1]:
+                    stack.pop()
+                    stack.append(grid[row][col])
+                elif not stack:
+                    stack.append(grid[row][col])
+
+            ans += stack[0]
         
-        return -ans
+        return ans
             
             
                 
