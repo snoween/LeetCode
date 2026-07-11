@@ -10,7 +10,7 @@ class Solution:
                     if backspaceCount > 0:
                         backspaceCount -= 1
                     else:
-                        return (s[index], index)
+                        return (s[index], index-1)
                 index -= 1
 
             return ("", -1)
@@ -20,11 +20,7 @@ class Solution:
             sChar, i = getNextCharacter(s, i)
             tChar, j = getNextCharacter(t, j)
 
-
             if sChar != tChar:
                 return False
-
-            i -= 1
-            j -= 1
 
         return True
