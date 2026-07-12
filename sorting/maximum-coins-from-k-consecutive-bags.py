@@ -1,6 +1,6 @@
 class Solution:
     def maximumCoins(self, coins: List[List[int]], k: int) -> int:
-        def slide(segments):
+        def bestTotal(segments):
             segments.sort()
             n = len(segments)
 
@@ -26,11 +26,11 @@ class Solution:
             return best
 
         # Case 1: window ends at r_i 
-        case_end_at_r = slide(coins)
+        case_end_at_r = bestTotal(coins)
 
         # Case 2: window starts at l_i
         # -> reverse (l, r) -> (-r, -l)
         mirrored = [[-r, -l, c] for l, r, c in coins]
-        case_start_at_l = slide(mirrored)
+        case_start_at_l = bestTotal(mirrored)
 
         return max(case_end_at_r, case_start_at_l)
