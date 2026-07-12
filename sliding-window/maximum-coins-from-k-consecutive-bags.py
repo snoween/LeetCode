@@ -25,6 +25,7 @@ class Solution:
 
             return best
 
+
         # Case 1: window ends at r_i 
         case_end_at_r = bestTotal(coins)
 
