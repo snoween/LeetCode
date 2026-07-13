@@ -13,7 +13,7 @@ class Solution:
         dummy.next = head
 
         prev = head
-        curr = head.next
+        curr = dummy.next.next
         
         while curr:
             if prev.val == curr.val:
