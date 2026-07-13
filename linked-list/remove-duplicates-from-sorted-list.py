@@ -9,11 +9,11 @@ class Solution:
         # curr = 1, curr.next = next = 1
         # if next = curr: curr -> curr.next.next
 
-        dummy = ListNode()
-        dummy.next = head
+        if not head:
+            return None
 
         prev = head
-        curr = dummy.next.next
+        curr = head.next
         
         while curr:
             if prev.val == curr.val:
@@ -22,4 +22,5 @@ class Solution:
                 prev = curr
             curr = curr.next
 
-        return dummy.next
+        prev.next = None
+        return head
