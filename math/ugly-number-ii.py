@@ -1,6 +1,6 @@
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
-        def isUglyNum(heap, num):
+        def UpdateUglyNum(heap: List, num: int) -> List:
             if num % 5 == 0:
                 heapq.heappush(arr, num * 5)
                 return arr
@@ -20,7 +20,7 @@ class Solution:
         count = 1
         while count < n:
             num = heapq.heappop(arr)
-            isUglyNum(arr, num)
+            UpdateUglyNum(arr, num)
             count += 1
         
         return heapq.heappop(arr)
