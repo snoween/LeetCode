@@ -19,10 +19,12 @@ class MedianFinder:
         heapq.heapify(self.heap_max)
         print(self.heap_min)
         print(self.heap_max)
-        print(len(self.heap_min) - len(self.heap_max))
+        
         if len(self.heap_min) - len(self.heap_max) == 0:
             return (self.heap_min[-1] + (-self.heap_max[-1])) / 2
-        else:
+        elif len(self.heap_min) > len(self.heap_max):
+            return self.heap_min[-1]
+        elif len(self.heap_min) < len(self.heap_max):
             return -self.heap_max[-1]
 
 # Your MedianFinder object will be instantiated and called as such:
