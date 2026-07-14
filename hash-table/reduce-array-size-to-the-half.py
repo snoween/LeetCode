@@ -4,6 +4,7 @@ class Solution:
         freq = Counter(arr)
         if len(freq) == 1:
             return 1
+            
         list_val = list(freq.values())
         list_val.sort()
         
