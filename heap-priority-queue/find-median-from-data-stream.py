@@ -6,6 +6,7 @@ class MedianFinder:
 
     def addNum(self, num: int) -> None:
         heapq.heappush(self.heap_max, -num)
+
         max_num = heapq.heappop(self.heap_max)
         heapq.heappush(self.heap_min, -max_num)
 
@@ -18,8 +19,7 @@ class MedianFinder:
             return ((self.heap_min[0] - (self.heap_max[0])) / 2)
         else:
             return -self.heap_max[0]
-        
-        
+   
 
 # Your MedianFinder object will be instantiated and called as such:
 # obj = MedianFinder()
