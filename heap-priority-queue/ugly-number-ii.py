@@ -16,6 +16,7 @@ class Solution:
         
         arr = [1]
         heapq.heapify(arr)
+
         count = 1
         while count < n:
             num = heapq.heappop(arr)
@@ -23,4 +24,3 @@ class Solution:
             count += 1
         
         return heapq.heappop(arr)
-
