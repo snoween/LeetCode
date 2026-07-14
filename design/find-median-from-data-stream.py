@@ -4,15 +4,16 @@ class MedianFinder:
         self.heap_min = []
         self.heap_max = []
         self.med_val = 0
+        self.prev = 0
 
     def addNum(self, num: int) -> None:
         if not self.heap_min and not self.heap_max:
             self.heap_min.append(num)
-        elif num >= self.heap_min[-1]:
+        elif num >= self.prev:
             self.heap_max.append(-num)
-        elif num < self.heap_max[-1]:
+        elif num < self.prev:
             self.heap_min.append(num)
-        
+        self.prev = num
     def findMedian(self) -> float:
         heapq.heapify(self.heap_min)
         heapq.heapify(self.heap_max)
