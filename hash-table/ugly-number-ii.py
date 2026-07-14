@@ -1,5 +1,7 @@
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
+        # If number mod 5 = 0 -> no need to multiple with 2, 3 
+        # -> avoid duplicate number (eg: avoid push 2x3 and 3x2, only push 2x3)
         def UpdateUglyNum(heap: List, num: int) -> List:
             if num % 5 == 0:
                 heapq.heappush(arr, num * 5)
