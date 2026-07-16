@@ -24,11 +24,11 @@ class Solution:
         time_list = list(time)
         count_hr = checkHour(time_list[0], time_list[1])
         count_min = checkMin(time_list[3], time_list[4])
-        print(count_hr, count_min)
-        if count_hr and count_min:
-            return count_hr * count_min
-        elif not count_hr and not count_min:
+
+        if not count_hr and not count_min:
             return 1
+        elif count_hr and count_min:
+            return count_hr * count_min
         elif not count_hr:
             return count_min
         elif not count_min:
