@@ -28,6 +28,8 @@ class Solution:
         print(count_hr, count_min)
         if count_hr and count_min:
             return count_hr * count_min
+        elif not count_hr and not count_min:
+            return 1
         elif not count_hr:
             return count_min
         elif not count_min:
