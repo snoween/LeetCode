@@ -31,7 +31,7 @@ class Solution:
 
         for i in range(k):
             curr_queue.append(nums[i])
-        
+            
         result.append(helper(curr_queue))
 
         for i in range(k, len(nums)):
