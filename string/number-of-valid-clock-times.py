@@ -1,24 +1,23 @@
 class Solution:
     def countTime(self, time: str) -> int:
-        def checkHour(index_hr1, index_hr2):
-            if index_hr1 == '?' and index_hr2 == '?':
+        def checkHour(h1, h2):
+            if h1 == '?' and h2 == '?':
                 return 24
-            elif index_hr1 == '?' and int(index_hr2) >= 4:
+            elif h1 == '?' and int(h2) >= 4:
                 return 2
-            elif index_hr1 == '?' and int(index_hr2) < 4:
+            elif h1 == '?' and int(h2) < 4:
                 return 3
-            elif index_hr2 == '?' and int(index_hr1) < 2:
+            elif h2 == '?' and int(h1) < 2:
                 return 10
-            elif index_hr2 == '?' and int(index_hr1) == 2:
+            elif h2 == '?' and int(h1) == 2:
                 return 4
         
-        def checkMin(index_min1, index_min2):
-            print(index_min1, index_min2)
-            if index_min1 == '?' and index_min2 == '?':
+        def checkMin(m1, m2):
+            if m1 == '?' and m2 == '?':
                 return 60
-            elif index_min1 == '?' and index_min2 != '?':
+            elif m1 == '?' and m2 != '?':
                 return 6
-            elif index_min2 == '?' and index_min1 != '?':
+            elif m2 == '?' and m1 != '?':
                 return 10
         
         time_list = list(time)
