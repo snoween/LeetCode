@@ -10,7 +10,7 @@ class Solution:
             elif index_hr2 == '?' and int(index_hr1) < 2:
                 return 10
             elif index_hr2 == '?' and int(index_hr1) == 2:
-                return 5
+                return 4
         
         def checkMin(index_min1, index_min2):
             print(index_min1, index_min2)
