@@ -6,7 +6,7 @@ class Solution:
             elif index_hr1 == '?' and int(index_hr2) >= 5:
                 return 2
             elif index_hr1 == '?' and int(index_hr2) < 5:
-                return 1
+                return 3
             elif index_hr2 == '?' and int(index_hr1) < 2:
                 return 10
             elif index_hr2 == '?' and int(index_hr1) == 2:
