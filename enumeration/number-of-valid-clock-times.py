@@ -3,9 +3,9 @@ class Solution:
         def checkHour(index_hr1, index_hr2):
             if index_hr1 == '?' and index_hr2 == '?':
                 return 24
-            elif index_hr1 == '?' and int(index_hr2) >= 5:
+            elif index_hr1 == '?' and int(index_hr2) >= 4:
                 return 2
-            elif index_hr1 == '?' and int(index_hr2) < 5:
+            elif index_hr1 == '?' and int(index_hr2) < 4:
                 return 3
             elif index_hr2 == '?' and int(index_hr1) < 2:
                 return 10
@@ -22,7 +22,6 @@ class Solution:
                 return 10
         
         time_list = list(time)
-        
         count_hr = checkHour(time_list[0], time_list[1])
         count_min = checkMin(time_list[3], time_list[4])
         print(count_hr, count_min)
