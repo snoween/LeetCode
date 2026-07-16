@@ -32,5 +32,4 @@ class Solution:
         elif not count_hr:
             return count_min
         elif not count_min:
-            return count_hr
-         
+            return count_hr    
