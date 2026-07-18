@@ -7,6 +7,6 @@ class Solution:
                     stack.pop()
                 elif char != "#":
                     stack.append(char)
-            return ''.join(stack)
+            return stack
         
         return checkBackspace(s) == checkBackspace(t)
