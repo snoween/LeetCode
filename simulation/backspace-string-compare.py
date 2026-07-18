@@ -5,8 +5,8 @@ class Solution:
             for char in s:
                 if stack and char == "#":
                     stack.pop()
-                else:
+                elif char != "#":
                     stack.append(char)
-            return stack
+            return ''.join(stack)
         
         return checkBackspace(s) == checkBackspace(t)
