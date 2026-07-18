@@ -23,17 +23,8 @@ class LRUCache:
             return -1
         
         node = self.meet[key]
-
-        node_next = node.next
-        node_prev = node.prev
-        node_next.prev = node_prev
-        node_prev.next = node_next
-
-        head_next = self.head.next
-        self.head.next = node
-        node.prev = self.head
-        node.next = head_next
-        head_next.prev = node
+        self.removeNode(node)
+        self.insertAtHead(node)
 
         return node.val
 
@@ -44,29 +35,29 @@ class LRUCache:
             self.current_capacity += 1
             if self.current_capacity > self.capacity:
                 del self.meet[self.tail.prev.key]
-
-                prevNode = self.tail.prev.prev
-                self.tail.prev = prevNode
-                prevNode.next = self.tail
-
+                self.removeNode(self.tail.prev)
                 self.current_capacity -= 1
         else:
-            prevNode = self.meet[key].prev
-            nextNode = self.meet[key].next
-            prevNode.next = nextNode
-            nextNode.prev = prevNode
-
+            self.removeNode(self.meet[key])
         
         newNode = self.meet[key]
         newNode.val = value
         newNode.key = key
-        
-        newNode.next = self.head.next
-        self.head.next = newNode
-        newNode.prev = self.head
-        newNode.next.prev = newNode
+        self.insertAtHead(newNode)
 
-        
+
+    def removeNode(self, node):
+        node_next = node.next
+        node_prev = node.prev
+        node_next.prev = node_prev
+        node_prev.next = node_next
+
+    def insertAtHead(self, node):
+        head_next = self.head.next
+        self.head.next = node
+        node.prev = self.head
+        node.next = head_next
+        head_next.prev = node  
 
 
 # Your LRUCache object will be instantiated and called as such:
