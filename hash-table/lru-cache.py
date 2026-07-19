@@ -5,7 +5,6 @@ class ListNode:
         self.next = None
         self.prev = None
         
- 
 class LRUCache:
 
     def __init__(self, capacity: int):
