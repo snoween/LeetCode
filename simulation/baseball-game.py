@@ -8,9 +8,7 @@ class Solution:
             elif ele == 'D':
                 stack.append(stack[-1] * 2)
             elif ele == '+':
-                num1 = stack[-1]
-                num2 = stack[-2]
-                stack.append(num1 + num2)
+                stack.append(stack[-1] + stack[-2])
             else:
                 stack.append(int(ele))
 
