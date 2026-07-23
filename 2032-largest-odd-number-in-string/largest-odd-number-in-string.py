@@ -9,8 +9,9 @@ class Solution:
                 # update odd index
                 odd_idx = i
         
+        # Check if odd idx = -1
         if odd_idx == -1:
+            # it means no odd number -> return empty str
             return ''
-        else:
-            return num[:odd_idx+1]
-        # return string from 0 -> odd index if odd idx not -1, else empty str
+        # if not -1, return str from 0 -> odd idx + 1
+        return num[:odd_idx+1]
