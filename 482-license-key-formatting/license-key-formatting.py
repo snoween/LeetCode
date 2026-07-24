@@ -39,4 +39,3 @@ class Solution:
 
         # return reversed stack and join it
         return ''.join(reversed(stack))
-    
