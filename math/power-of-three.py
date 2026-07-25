@@ -1,7 +1,7 @@
 class Solution:
     def isPowerOfThree(self, n: int) -> bool:
         def powerthree(num):
-            if n == num:
+            if n == num or n == 1:
                 return True
             elif n < num:
                 return False
