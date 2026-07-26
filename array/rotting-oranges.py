@@ -26,6 +26,7 @@ class Solution:
                 for i, j in DIRS:
                     ni = i + rot_i
                     nj = j + rot_j
+
                     if 0 <= ni < m and 0 <= nj < n and grid[ni][nj] == 1:
                         grid[ni][nj] = 2
                         fresh -= 1
@@ -37,9 +38,5 @@ class Solution:
 
         if fresh != 0:
             return -1
+            
         return rotten_time   
-                        
-        
-
-
-
