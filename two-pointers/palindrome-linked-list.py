@@ -23,6 +23,9 @@ class Solution:
                     return False
                 dummy = dummy.next
                 size -= 1
-        
+                
+        if stack: 
+            return False
+
         return True
             
