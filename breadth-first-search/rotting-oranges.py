@@ -23,7 +23,7 @@ class Solution:
             isRotten = False
 
             # Change neighbors to rotten fruits
-            for i in range(size):
+            for _ in range(size):
                 rot_i, rot_j = rotten.popleft()
                 for i, j in DIRS:
                     ni = i + rot_i
