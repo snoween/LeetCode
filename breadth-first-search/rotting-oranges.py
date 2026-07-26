@@ -19,7 +19,7 @@ class Solution:
         rotten_time = 0
         while rotten:
             size = len(rotten) 
-            ifRotten = False
+            isRotten = False
 
             for i in range(size):
                 rot_i, rot_j = rotten.popleft()
@@ -30,9 +30,9 @@ class Solution:
                         grid[ni][nj] = 2
                         fresh -= 1
                         rotten.append((ni, nj))
-                        ifRotten = True
+                        isRotten = True
             
-            if ifRotten:
+            if isRotten:
                 rotten_time += 1
 
         if fresh != 0:
