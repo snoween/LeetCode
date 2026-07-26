@@ -50,6 +50,7 @@ class Solution:
                         rotten.append((ni, nj))
                         # has rotten -> True
                         isRotten = True
+                        
             # If isRotten
             if isRotten:
                 # time + 1
