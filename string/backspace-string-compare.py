@@ -1,12 +1,12 @@
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
-        def checkBackspace(s: str):
+        def checkStr(s):
             stack = []
             for char in s:
-                if stack and char == "#":
-                    stack.pop()
-                elif char != "#":
+                if char != '#':
                     stack.append(char)
-            return stack
+                elif stack and char == '#':
+                    stack.pop()
+            return ''.join(stack)
         
-        return checkBackspace(s) == checkBackspace(t)
+        return checkStr(s) == checkStr(t)
