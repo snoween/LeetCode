@@ -15,10 +15,6 @@ class Solution:
             while freq[char] > 1:
                 # decrease left pointer val
                 freq[s[left]] -= 1
-                # if val of left pointer = 0
-                if freq[s[left]] == 0:
-                    # del char
-                    del freq[s[left]]
                 # left + 1
                 left += 1
             # update max len = max(max_len, right - left + 1)
