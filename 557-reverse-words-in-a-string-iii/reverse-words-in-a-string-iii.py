@@ -23,8 +23,7 @@ class Solution:
         # loop curr_idx, char through list s
         for word in list_words:
             output.append(reverse_word(word))
-                
-        
+
         # return join list
         return ' '.join(output)
             
