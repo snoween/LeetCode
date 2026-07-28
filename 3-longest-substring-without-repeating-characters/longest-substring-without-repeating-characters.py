@@ -17,6 +17,7 @@ class Solution:
                 freq[s[left]] -= 1
                 # left + 1
                 left += 1
+                
             # update max len = max(max_len, right - left + 1)
             max_len = max(max_len, right - left + 1)
 
