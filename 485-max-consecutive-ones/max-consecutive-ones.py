@@ -9,4 +9,5 @@ class Solution:
                 max_count = max(max_count, count)
             else:
                 count = 0
+                
         return max_count
