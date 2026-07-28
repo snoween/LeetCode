@@ -13,6 +13,4 @@ class Solution:
                 ans.extend([i, num_idx[curr_num]])
                 return ans
             # if num not in dict -> add num to dict
-            num_idx[num] = i
-
-        
+            num_idx[num] = i    
