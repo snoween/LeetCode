@@ -20,10 +20,10 @@ class Solution:
 
             return ''.join(list_word)
 
-        output = []
+        output = ''
         # loop through list words
         for word in list_words:
-            output.append(reverse_word(word))
+            output += reverse_word(word) + ' '
 
         # return join list
-        return ' '.join(output)          
+        return output.strip()        
