@@ -1,9 +1,10 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
         # pattern: 2 pointers
-        # convert str s to list
+        # chunk str s 
         list_words = s.split(" ")
 
+        # function to reverse a word
         def reverse_word(word):
             list_word = list(word)
             left = 0
@@ -20,10 +21,9 @@ class Solution:
             return ''.join(list_word)
 
         output = []
-        # loop curr_idx, char through list s
+        # loop through list words
         for word in list_words:
             output.append(reverse_word(word))
 
         # return join list
-        return ' '.join(output)
-            
+        return ' '.join(output)          
