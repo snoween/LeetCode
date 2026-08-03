@@ -22,36 +22,35 @@ class Solution:
             # get len queue
             n = len(queue)
             # set prev = none
-            head = None
+            prev = None
             # loop through len queue
             for _ in range(n):
                 # popleft node
                 curr = queue.popleft()
                 
                 # if not prev
-                if not head:
+                if not prev:
                     # prev = node (first node in queue)
-                    print(index, curr.val)
-                    head = curr
-                    if index % 2 == 0 and head.val % 2 == 0:
+                    prev = curr
+                    # check if the first node is valid or not
+                    if index % 2 == 0 and prev.val % 2 == 0:
                         return False
-                    elif index % 2 != 0 and head.val % 2 != 0:
+                    elif index % 2 != 0 and prev.val % 2 != 0:
                         return False
                 # else
                 else:
                     # if odd idx
                     if index % 2 != 0:
                         # if node > prev
-                        if curr.val >= head.val or curr.val % 2 != 0:
+                        if curr.val >= prev.val or curr.val % 2 != 0:
                             # return false
                             return False
                     # if even idx
                     else:
                         # if node < prev
-                        if curr.val <= head.val or curr.val % 2 == 0:
+                        if curr.val <= prev.val or curr.val % 2 == 0:
                             # return false
                             return False
-                    
                     
                 # if node left -> append to queue
                 if curr.left:
@@ -60,7 +59,8 @@ class Solution:
                 if curr.right:
                     queue.append(curr.right)
 
-                head = curr
+                # update prev to curr
+                prev = curr
                 
             # update index
             index += 1
