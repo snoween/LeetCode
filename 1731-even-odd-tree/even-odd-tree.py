@@ -6,15 +6,16 @@
 #         self.right = right
 class Solution:
     def isEvenOddTree(self, root: Optional[TreeNode]) -> bool:
-        # even idx: increasing
-        # odd idx: decreasing
+        # 1-indexed 
+        # odd idx: increasing
+        # even idx: decreasing
         if not root:
             return False
         
         # queue and append root
         queue = deque()
         queue.append(root)
-        # set init idx = 0
+        # set init idx = 1
         index = 1
 
         # loop while valid queue
