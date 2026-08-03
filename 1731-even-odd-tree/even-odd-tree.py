@@ -15,7 +15,7 @@ class Solution:
         queue = deque()
         queue.append(root)
         # set init idx = 0
-        index = 0
+        index = 1
 
         # loop while valid queue
         while queue:
@@ -33,14 +33,14 @@ class Solution:
                     # prev = node (first node in queue)
                     prev = curr
                     # check if the first node is valid or not
-                    if index % 2 == 0 and prev.val % 2 == 0:
+                    if index % 2 == 0 and prev.val % 2 != 0:
                         return False
-                    elif index % 2 != 0 and prev.val % 2 != 0:
+                    elif index % 2 != 0 and prev.val % 2 == 0:
                         return False
                 # else
                 else:
                     # if odd idx
-                    if index % 2 != 0:
+                    if index % 2 == 0:
                         # if node > prev
                         if curr.val >= prev.val or curr.val % 2 != 0:
                             # return false
