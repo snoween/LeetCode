@@ -32,13 +32,17 @@ class Solution:
                 # if node right -> append tuple ((node_c + 1, node_r - 1), node right)
                 if node.right:
                     queue.append(((coor[0] + 1, coor[1] + 1), node.right))
-                   
+
+        # make a dict to store values which same col          
         idx_val = defaultdict(list)
+        # loop while valid heap
         while heap:
             ele  = heapq.heappop(heap)
+            # dict {col: list(node val)}
             idx_val[ele[0][0]].append(ele[1])
         
         output = []
+        # append values based on sorted keys
         for key in sorted(idx_val.keys()):
             output.append(idx_val[key])
         
