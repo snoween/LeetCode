@@ -9,28 +9,6 @@ class Solution:
         if not root:
             return None
         
-        queue = deque()
-        queue.append(root)
-
-        while queue:
-            n = len(queue)
-            for _ in range(n):
-                node = queue.popleft()
-                if node.right and node.left:
-                    node.right, node.left = node.left, node.right
-                    queue.append(node.left)
-                    queue.append(node.right)
-
-                if node.left and not node.right:
-                    
-                    node.right = node.left
-                    node.left = None
-                    queue.append(node.right)
-
-                elif node.right and not node.left:
-                    
-                    node.left = node.right
-                    node.right = None
-                    queue.append(node.left)
+        root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
         
         return root
