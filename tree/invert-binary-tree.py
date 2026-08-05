@@ -20,10 +20,17 @@ class Solution:
                     node.right, node.left = node.left, node.right
                     queue.append(node.left)
                     queue.append(node.right)
+
                 if node.left and not node.right:
-                    queue.append(node.left)
-                if node.right and not node.left:
+                    
+                    node.right = node.left
+                    node.left = None
                     queue.append(node.right)
+
+                elif node.right and not node.left:
+                    
+                    node.left = node.right
+                    node.right = None
+                    queue.append(node.left)
         
         return root
-                
