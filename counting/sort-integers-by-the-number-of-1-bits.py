@@ -8,6 +8,8 @@ class Solution:
             while num > 0:
                 # binary_str = str(num % 2) + binary_str
                 binary_str = str(num % 2) + binary_str
+                # divide num by 2
+                num = num // 2
             # return binary_str or '0'
             return binary_str or '0'
         
@@ -34,7 +36,7 @@ class Solution:
             # output extend that dict[min_key]
             output.extend(dictOnes[minKey])
             # del min_key
-            del dictOnes[minkey]
+            del dictOnes[minKey]
         
         # return output
         return output
