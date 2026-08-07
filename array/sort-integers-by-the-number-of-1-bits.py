@@ -1,7 +1,7 @@
 class Solution:
     def sortByBits(self, arr: List[int]) -> List[int]:
         # function to convert int to bin -> str
-        def IntToBin(num):
+        def IntToBin(num: int) -> str:
             # define binary_str = ''
             binary_str = ''
             # loop while num > 0
