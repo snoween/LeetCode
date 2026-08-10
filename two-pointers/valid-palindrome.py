@@ -7,11 +7,11 @@ class Solution:
         # while loop if left < right
         while left < right:
             # while left is not alpha -> move left
-            while not s[left].isalpha():
+            while not s[left].isalpha() and left < right:
                 left += 1
 
             # while right is not alpha -> move right
-            while not s[right].isalpha():
+            while not s[right].isalpha() and right > left:
                 right -= 1
 
             # if left lower != right lower
