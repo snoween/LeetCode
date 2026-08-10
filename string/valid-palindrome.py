@@ -6,22 +6,20 @@ class Solution:
 
         # while loop if left < right
         while left < right:
-            # while left is not alpha -> move left
-            while not s[left].isalpha() and left < right:
+            if not s[left].isalnum():
                 left += 1
-
-            # while right is not alpha -> move right
-            while not s[right].isalpha() and right > left:
+            elif not s[right].isalnum():
                 right -= 1
-
-            # if left lower != right lower
-            if s[left].lower() != s[right].lower():
-                # return false
+            elif s[left].lower() != s[right].lower():
                 return False
+            else:
+                left += 1
+                right -= 1
+        
+        return True
+
             
-            # move left right
-            left += 1
-            right -= 1
+            
         
         # return True
         return True
