@@ -17,8 +17,10 @@ class Solution:
                 return [root.val]
 
             result = []
-            result.extend(getLeaf(root.left))
-            result.extend(getLeaf(root.right))
+            if root.left:
+                result.extend(getLeaf(root.left))
+            if root.right:
+                result.extend(getLeaf(root.right))
             return result
 
         return getLeaf(root1) == getLeaf(root2)
