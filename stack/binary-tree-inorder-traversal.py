@@ -11,7 +11,7 @@ class Solution:
 
         result = []
         result.extend(self.inorderTraversal(root.left))
-        result.extend([root.val])
+        result.append(root.val)
         result.extend(self.inorderTraversal(root.right))
         
         return result
