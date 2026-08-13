@@ -35,3 +35,13 @@ class Solution:
         
         # return depth, offset by 1
         return depth - 1
+
+"""
+Recursion:
+
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        return 1 + max(self.maxDepth(root.left) + self.maxDepth(root.right)
+"""
