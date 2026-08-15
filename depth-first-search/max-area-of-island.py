@@ -25,6 +25,7 @@ class Solution:
             
             return area
            
+           
         for curr_row in range(row):
             for curr_col in range(col):
                 if grid[curr_row][curr_col] == 1 and (curr_row, curr_col) not in seen:
