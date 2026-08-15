@@ -21,9 +21,9 @@ class Solution:
                     next_col = curr_position[1] + coor[1]
 
                     if 0 <= next_row < row and 0 <= next_col < col and maze[next_row][next_col] == '.':
-                        if tuple([next_row, next_col]) not in seen_step:
+                        if (next_row, next_col) not in seen_step:
                             queue.append([next_row, next_col])
-                            seen_step.add(tuple([next_row, next_col]))
+                            seen_step.add((next_row, next_col))
                         
                         if (next_row == 0 or next_row == row - 1) or (next_col == 0 or next_col == col - 1):
                             return layer
