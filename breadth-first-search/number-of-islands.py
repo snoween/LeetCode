@@ -11,7 +11,7 @@ class Solution:
             queue = deque()
             queue.append((curr_row, curr_col))
             seen.add((curr_row, curr_col))
-            print(queue)
+            
             while queue:
                 x, y = queue.popleft()
 
