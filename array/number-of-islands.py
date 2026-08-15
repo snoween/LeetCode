@@ -11,25 +11,22 @@ class Solution:
             queue = deque()
             queue.append((curr_row, curr_col))
             seen.add((curr_row, curr_col))
-
+            print(queue)
             while queue:
                 x, y = queue.popleft()
 
                 for coor in DIRS:
                     newX = x + coor[0]
                     newY = y + coor[1]
-                    print(newX, newY)
-                    if 0 <= newX < row and 0 <= newY < col and grid[newX][newY] == 1:
-                        print(newX, newY)
+                    if 0 <= newX < row and 0 <= newY < col and grid[newX][newY] == '1':
                         if (newX, newY) not in seen:
                             seen.add((newX, newY))
                             queue.append((newX, newY))
             
         for curr_row in range(row):
             for curr_col in range(col):
-                if grid[curr_row][curr_col] == 1 and (curr_row, curr_col) not in seen:
+                if grid[curr_row][curr_col] == '1' and (curr_row, curr_col) not in seen:
                     numIslands += 1
-                    print(seen)
                     ifIsland(curr_row, curr_col)
         
         return numIslands
