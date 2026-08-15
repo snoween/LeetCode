@@ -6,39 +6,43 @@
 #         self.right = right
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        """
+        - Do they need layer checking? - Yes
+        - Algorithm: BFS, queue
+        - Time comp: O(N)
+        - Space comp: O(N)
+        """
         if not root:
             return []
         
-        # define queue to store root as initial val
+        # Get a deque with root
         queue = deque()
         queue.append(root)
-        # define output array as empty
-        output = []
 
-        # loop while queue is valid
+        # init result as []
+        result = []
+
+        # check while valid queue
         while queue:
-            # get len of current queue
+            # get len recent queue
             n = len(queue)
-            # define empty layer array
+            # set init layer = []
             layer = []
-
-            # loop through len queue
+            # for loop through len queue
             for _ in range(n):
-                # popleft the node
+                # pop queue to get node
                 node = queue.popleft()
-                # layer append node value
+                # layer append node val
                 layer.append(node.val)
-                # check if node left
+                # check if node left -> append to queue
                 if node.left:
-                    # append node left to queue
                     queue.append(node.left)
-                # check if node right
+                # check if node right -> append to queue
                 if node.right:
-                    # append node right to queue
                     queue.append(node.right)
             
-            # output append layer
-            output.append(layer)
+            # append layer to result
+            result.append(layer)
         
-        # return output
-        return output
+        # return result
+        return result
