@@ -6,6 +6,11 @@
 #         self.right = right
 class Solution:
     def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
+        """
+        Algorithm: BFS - Queue
+        Time comp: O(N)
+        Space comp: O(W) - W: largest width of tree
+        """
         if not root:
             return []
         
