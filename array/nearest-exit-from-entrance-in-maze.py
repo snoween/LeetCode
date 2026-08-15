@@ -26,6 +26,7 @@ class Solution:
                             seen_step.add((next_row, next_col))
                         
                         if (next_row == 0 or next_row == row - 1) or (next_col == 0 or next_col == col - 1):
-                            return layer
+                            if (next_row, next_col) != tuple(entrance):
+                                return layer
 
         return -1
