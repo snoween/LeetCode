@@ -10,7 +10,7 @@ class Solution:
         - Do they need layer checking? - Yes
         - Algorithm: BFS, queue
         - Time comp: O(N)
-        - Space comp: O(N)
+        - Space comp: O(W) - W: largest width of tree
         """
         if not root:
             return []
