@@ -11,10 +11,9 @@ class Solution:
             queue = deque()
             queue.append((curr_row, curr_col))
             seen.add((curr_row, curr_col))
-            
+
             while queue:
                 x, y = queue.popleft()
-
                 for coor in DIRS:
                     newX = x + coor[0]
                     newY = y + coor[1]
