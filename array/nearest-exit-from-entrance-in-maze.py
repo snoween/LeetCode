@@ -1,32 +1,41 @@
 class Solution:
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
-        row, col = len(maze), len(maze[0])
-        DIRS = [(0, 1), (-1, 0), (0, -1), (1, 0)]
+        """
+        - Algorithm: BFS, no layers
+        - Time comp: O(N)
+        - Space comp: O(N)
+        """
 
-        # queue to save next step
-        queue = deque()
-        queue.append(entrance)
+        m, n = len(maze), len(maze[0])
+        DIRS = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
-        seen_step = set()
-        seen_step.add(tuple(entrance))
+        # Set init stack and append entrance
+        stack = [tuple(entrance)]
+        # Use set for storing visited coor
+        visited = set()
+        visited.add(tuple(entrance))
 
-        layer = 0
-        while queue:
-            n = len(queue)
-            layer += 1
-            for _ in range(n):
-                curr_position = queue.popleft()
-                for coor in DIRS:
-                    next_row = curr_position[0] + coor[0]
-                    next_col = curr_position[1] + coor[1]
+        #set init step = 0
+        steps = 0
 
-                    if 0 <= next_row < row and 0 <= next_col < col and maze[next_row][next_col] == '.':
-                        if (next_row, next_col) not in seen_step:
-                            queue.append([next_row, next_col])
-                            seen_step.add((next_row, next_col))
-                        
-                        if (next_row == 0 or next_row == row - 1) or (next_col == 0 or next_col == col - 1):
-                            if (next_row, next_col) != tuple(entrance):
-                                return layer
+        while stack:
+            x, y = stack.pop()
+            # increase step by 1 for moving 1 step forward
+            steps += 1
 
+            # check neighbors
+            for coor in DIRS:
+                newX = x + coor[0]
+                newY = y + coor[1]
+
+                if 0 <= newX < m and 0 <= newY < n and maze[newX][newY] == '.':
+                    if (newX, newY) not in visited:
+                        stack.append((newX, newY))
+                        visited.add((newX, newY))
+                    
+                    if (newX == 0 or newX == m - 1) or (newY == 0 or newY == n - 1):
+                        if (newX, newY) != tuple(entrance):
+                            return steps
+
+        # if no paths -> return -1
         return -1
