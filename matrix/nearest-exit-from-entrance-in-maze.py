@@ -10,7 +10,8 @@ class Solution:
         DIRS = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
         # Set init stack and append entrance
-        stack = [tuple(entrance)]
+        queue = deque()
+        queue.append((entrance[0], entrance[1]))
         # Use set for storing visited coor
         visited = set()
         visited.add(tuple(entrance))
@@ -18,8 +19,8 @@ class Solution:
         #set init step = 0
         steps = 0
 
-        while stack:
-            x, y = stack.pop()
+        while queue:
+            x, y = queue.popleft()
             # increase step by 1 for moving 1 step forward
             steps += 1
 
@@ -30,7 +31,7 @@ class Solution:
 
                 if 0 <= newX < m and 0 <= newY < n and maze[newX][newY] == '.':
                     if (newX, newY) not in visited:
-                        stack.append((newX, newY))
+                        queue.append((newX, newY))
                         visited.add((newX, newY))
                     
                     if (newX == 0 or newX == m - 1) or (newY == 0 or newY == n - 1):
