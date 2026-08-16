@@ -11,7 +11,7 @@ class Solution:
 
         # Set init stack and append entrance
         queue = deque()
-        queue.append((entrance[0], entrance[1]))
+        queue.append([entrance[0], entrance[1]])
         # Use set for storing visited coor
         visited = set()
         visited.add(tuple(entrance))
@@ -31,7 +31,7 @@ class Solution:
 
                 if 0 <= newX < m and 0 <= newY < n and maze[newX][newY] == '.':
                     if (newX, newY) not in visited:
-                        queue.append((newX, newY))
+                        queue.append([newX, newY])
                         visited.add((newX, newY))
                     
                     if (newX == 0 or newX == m - 1) or (newY == 0 or newY == n - 1):
