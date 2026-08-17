@@ -1,42 +1,34 @@
 class Solution:
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
-        """
-        - Algorithm: BFS, no layers
-        - Time comp: O(N)
-        - Space comp: O(N)
-        """
+        row, col = len(maze), len(maze[0])
+        # neighbors
+        DIRS = [(0, 1), (-1, 0), (0, -1), (1, 0)]
 
-        m, n = len(maze), len(maze[0])
-        DIRS = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
-        # Set init stack and append entrance
+        # queue to save next step
         queue = deque()
-        queue.append([entrance[0], entrance[1]])
-        # Use set for storing visited coor
-        visited = set()
-        visited.add(tuple(entrance))
+        queue.append((entrance[0], entrance[1], 0))
 
-        #set init step = 0
-        steps = 0
 
+        seen_step = set()
+        seen_step.add((entrance[0], entrance[1]))
+
+
+        layer = 0
         while queue:
-            x, y = queue.popleft()
-            # increase step by 1 for moving 1 step forward
-            steps += 1
-
-            # check neighbors
+            x, y, step = queue.popleft()
             for coor in DIRS:
                 newX = x + coor[0]
                 newY = y + coor[1]
 
-                if 0 <= newX < m and 0 <= newY < n and maze[newX][newY] == '.':
-                    if (newX, newY) not in visited:
-                        queue.append([newX, newY])
-                        visited.add((newX, newY))
-                    
-                    if (newX == 0 or newX == m - 1) or (newY == 0 or newY == n - 1):
-                        if (newX, newY) != tuple(entrance):
-                            return steps
 
-        # if no paths -> return -1
+                if 0 <= newX < row and 0 <= newY < col and maze[newX][newY] == '.':
+                    if (newX, newY) not in seen_step:
+                        queue.append((newX, newY, step + 1))
+                        seen_step.add((newX, newY))
+                    
+                    if (newX == 0 or newX == row - 1) or (newY == 0 or newY == col - 1):
+                        return step + 1
+
+
         return -1
