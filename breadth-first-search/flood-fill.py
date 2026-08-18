@@ -9,13 +9,10 @@ class Solution:
         DIRS = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
         visited = set()
-        set_colors = set((image[sr][sc], color))
 
-        def switchColor(x: int, y: int):
+        def getVisited(x: int, y: int):
             stack = [(x, y)]
             visited.add((x, y))
-            # switch value of box to color value
-            image[x][y] = color
 
             while stack:
                 x, y = stack.pop()
@@ -25,12 +22,14 @@ class Solution:
                     newY = y + coor[1]
 
                     # check valid box
-                    if 0 <= newX < row and 0 <= newY < col and image[newX][newY] in set_colors:
+                    if 0 <= newX < row and 0 <= newY < col and image[newX][newY] == image[sr][sc]:
                         if (newX, newY) not in visited:
-                            image[newX][newY] = color
                             stack.append((newX, newY))
                             visited.add((newX, newY))
-            
-            return image
         
-        return switchColor(sr, sc)
+        getVisited(sr, sc)
+        for coor in visited:
+            image[coor[0]][coor[1]] = color
+        
+        return image
+
