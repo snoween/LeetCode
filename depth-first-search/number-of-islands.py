@@ -1,5 +1,10 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
+        """
+        - Algorithm: BFS - stack
+        - Time comp: O(M x N)
+        - Space comp: O(M x N)
+        """
         row, col = len(grid), len(grid[0])
         DIRS = [(0, 1), (0, -1), (1, 0), (-1, 0)]   # Neighbor coordinates
 
