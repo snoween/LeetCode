@@ -1,7 +1,7 @@
 class Solution:
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
         """
-        Algorithm: BFS - level transversal
+        Algorithm: BFS - level traversal
         Time comp: O(M x N)
         Space comp: O(M x N)
         """
