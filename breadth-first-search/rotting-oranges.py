@@ -1,63 +1,53 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
-        DIRS = [(0, -1), (0, 1), (1, 0), (-1, 0)]
-        m, n = len(grid), len(grid[0])
-        
-        # Set fresh = 0 to count fresh fruit later
+        """
+        - Algorithm: multi starting points - BFS, tranversal by level
+        - Time comp: O(M x N)
+        - Space comp: O(M x N)
+        """
+
+        row, col = len(grid), len(grid[0])
+        DIRS = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+        # queue to store all rotten oranges at first
+        queue = deque()
+
+        # a parameter to count fresh oranges
         fresh = 0
-        # Make rotten as deque to pop left later
-        rotten = deque()
-        
-        # Get coordinates of rotten fruits, count fresh fruits
-        for row in range(m):
-            for col in range(n):
-                # If ele = 2 -> append to rotten
-                if grid[row][col] == 2:
-                    rotten.append((row, col))
-                # If ele = 1 -> fresh fruit + 1
-                if grid[row][col] == 1:
+
+        # loop through matrix to get all the rotten and fresh one
+        for m in range(row):
+            for n in range(col):
+                if grid[m][n] == 2:
+                    queue.append((m, n))
+                    
+                elif grid[m][n] == 1:
                     fresh += 1
 
-        # If no fresh fruits -> None
         if fresh == 0:
             return 0
-        
-        rotten_time = 0
-        # Loop until no rotten fruits anymore
-        while rotten:
-            # Get size of CURRENT ROTTEN ARRAY
-            size = len(rotten) 
-            # Make default isrotten = False
-            isRotten = False
+        # set init time
+        time = 0
 
-            # Change neighbors to rotten fruits
-            for _ in range(size):
-                # Get coor of rotten
-                rot_i, rot_j = rotten.popleft()
+        while queue:
+            time += 1
+            len_queue = len(queue)
+            # loop through all rotten oranges in queue now
+            for _ in range(len_queue):
+                x, y = queue.popleft()      #coor of current rotten one
 
-                # Get coor of neighbors by using DIRS
-                for i, j in DIRS:
-                    ni = i + rot_i
-                    nj = j + rot_j
+                # loop to get neighbors values
+                for coor in DIRS:
+                    newX = x + coor[0]
+                    newY = y + coor[1]
 
-                    # If fresh fruit and row, col in range (m, n)
-                    if 0 <= ni < m and 0 <= nj < n and grid[ni][nj] == 1:
-                        # Change fresh to rotten
-                        grid[ni][nj] = 2  
-                        # Fresh - 1  
+                    # if neighbor is fresh -> change to rotten, decrease fresh by 1
+                    if 0 <= newX < row and 0 <= newY < col and grid[newX][newY] == 1:
+                        grid[newX][newY] = 2
                         fresh -= 1
-                        # Append new rotten point
-                        rotten.append((ni, nj))
-                        # has rotten -> True
-                        isRotten = True
-                        
-            # If isRotten
-            if isRotten:
-                # time + 1
-                rotten_time += 1
+                        queue.append((newX, newY))
 
-        # If still has fresh fruits -> return -1
-        if fresh != 0:
-            return -1
-            
-        return rotten_time   
+                        # if no fresh oranges -> return time
+                        if fresh == 0:
+                            return time
+
+        return -1
