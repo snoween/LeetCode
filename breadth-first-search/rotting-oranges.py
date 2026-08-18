@@ -1,7 +1,7 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         """
-        - Algorithm: multi starting points - BFS, tranversal by level
+        - Algorithm: multi starting points - BFS, traversal by level
         - Time comp: O(M x N)
         - Space comp: O(M x N)
         """
@@ -19,13 +19,12 @@ class Solution:
             for n in range(col):
                 if grid[m][n] == 2:
                     queue.append((m, n))
+                    
                 elif grid[m][n] == 1:
                     fresh += 1
-        
-        # if no fresh oranges -> take 0 min
+
         if fresh == 0:
             return 0
-
         # set init time
         time = 0
 
