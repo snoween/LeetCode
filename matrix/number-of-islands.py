@@ -1,31 +1,36 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         row, col = len(grid), len(grid[0])
-
-        DIRS = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+        DIRS = [(0, 1), (0, -1), (1, 0), (-1, 0)]   # Neighbor coordinates
 
         numIslands = 0
-        seen = set()
+        visited = set()
 
-        def ifIsland(curr_row: int, curr_col:int) -> int:
-            queue = deque()
-            queue.append((curr_row, curr_col))
-            seen.add((curr_row, curr_col))
+        def isIsland(x: int, y: int):
+            # queue to store lands
+            stack = []
+            stack.append((x, y))
+            visited.add((x, y))
 
-            while queue:
-                x, y = queue.popleft()
+            while stack:
+                x, y = stack.pop()
+
+                # get neighbor values
                 for coor in DIRS:
                     newX = x + coor[0]
                     newY = y + coor[1]
+
+                    # check if valid land 
                     if 0 <= newX < row and 0 <= newY < col and grid[newX][newY] == '1':
-                        if (newX, newY) not in seen:
-                            seen.add((newX, newY))
-                            queue.append((newX, newY))
-            
-        for curr_row in range(row):
-            for curr_col in range(col):
-                if grid[curr_row][curr_col] == '1' and (curr_row, curr_col) not in seen:
-                    numIslands += 1
-                    ifIsland(curr_row, curr_col)
+                        if (newX, newY) not in visited:
+                            stack.append((newX, newY))
+                            visited.add((newX, newY))
         
-        return numIslands
+        # loop through grid to get all number of islands
+        for x in range(row):
+            for y in range(col):
+                if grid[x][y] == '1' and (x, y) not in visited:
+                    isIsland(x, y)
+                    numIslands += 1
+        
+        return numIslands 
