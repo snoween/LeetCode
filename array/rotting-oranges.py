@@ -41,7 +41,9 @@ class Solution:
                     newY = y + coor[1]
 
                     # if neighbor is fresh -> change to rotten, decrease fresh by 1
-                    if 0 <= newX < row and 0 <= newY < col and grid[newX][newY] == 1:
+                    if not (0 <= newX < row and 0 <= newY < col):
+                        continue
+                    if grid[newX][newY] == 1:
                         grid[newX][newY] = 2
                         fresh -= 1
                         queue.append((newX, newY))
