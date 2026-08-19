@@ -32,7 +32,9 @@ class Solution:
                 newX = x + coor[0]
                 newY = y + coor[1]
                 # check if valid neighbor coor and value = -1
-                if 0 <= newX < row and 0 <= newY < col and dist[newX][newY] == -1:
+                if not (0 <= newX < row and 0 <= newY < col):
+                    continue
+                if dist[newX][newY] == -1:
                     # update new distance for neighbor value
                     dist[newX][newY] = dist[x][y] + 1
                     queue.append((newX, newY))
