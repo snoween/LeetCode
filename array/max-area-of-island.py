@@ -1,7 +1,7 @@
 class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
         """
-        - Algorithm: BFS - no level 
+        - Algorithm: BFS
         - Time comp: O(M x N)
         - Space comp: O(M x N)
         """
