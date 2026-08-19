@@ -26,12 +26,14 @@ class Solution:
                     newY = y + coor[1]
 
                     # check if valid box and is land
-                    if 0 <= newX < row and 0 <= newY < col and grid[newX][newY] == 1:
-                        if (newX, newY) not in visited:
-                            area += 1
-                            queue.append((newX, newY))
-                            visited.add((newX, newY))
-                
+                    if not (0 <= newX < row and 0 <= newY < col):
+                        continue
+            
+                    if (newX, newY) not in visited and grid[newX][newY] == 1:
+                        area += 1
+                        queue.append((newX, newY))
+                        visited.add((newX, newY))
+            
             return area
         
         # loop through matrix, call function when that is land and not in visited
