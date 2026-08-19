@@ -13,24 +13,24 @@ class Solution:
 
         def isIsland(x: int, y: int):
             # queue to store lands
-            stack = []
-            stack.append((x, y))
+            stack = [(x, y)]
             visited.add((x, y))
 
             while stack:
                 x, y = stack.pop()
-
                 # get neighbor values
                 for coor in DIRS:
                     newX = x + coor[0]
                     newY = y + coor[1]
 
                     # check if valid land 
-                    if 0 <= newX < row and 0 <= newY < col and grid[newX][newY] == '1':
-                        if (newX, newY) not in visited:
-                            stack.append((newX, newY))
-                            visited.add((newX, newY))
+                    if not (0 <= newX < row and 0 <= newY < col):
+                        continue
+                    if grid[newX][newY] == '1' and (newX, newY) not in visited:
+                        stack.append((newX, newY))
+                        visited.add((newX, newY))
         
+
         # loop through grid to get all number of islands
         for x in range(row):
             for y in range(col):
