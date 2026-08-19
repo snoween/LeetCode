@@ -1,7 +1,7 @@
 class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
         """
-        - Algorithm: BFS - stack, no level traversal
+        - Algorithm: DFS
         - Time comp: O(M x N)
         - Space comp: O(M x N)
         """
