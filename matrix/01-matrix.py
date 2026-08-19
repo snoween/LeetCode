@@ -4,6 +4,7 @@ class Solution:
         - Algorithm: BFS - multi sources
         - Time comp: O(M x N)
         - Space: O(M x N)
+        - Note: no need 'visited' because all values in queue are unique
         """
 
         # Edge case: check if valid 2D matrix or not
