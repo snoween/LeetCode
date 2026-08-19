@@ -1,7 +1,7 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         """
-        - Algorithm: BFS - stack
+        - Algorithm: DFS - stack
         - Time comp: O(M x N)
         - Space comp: O(M x N)
         """
