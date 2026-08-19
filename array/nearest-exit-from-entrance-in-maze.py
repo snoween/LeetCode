@@ -35,11 +35,12 @@ class Solution:
                     newY = y + neighbor[1]
 
                     # check if new coors are valid, and value of that box is valid to move forward
-                    if 0 <= newX < m and 0 <= newY < n and maze[newX][newY] == '.':
-                        # check if that box is never met before -> append to queue and visited
-                        if (newX, newY) not in visited:
-                            queue.append((newX, newY))
-                            visited.add((newX, newY))
+                    if not (0 <= newX < m and 0 <= newY < n):
+                        continue 
+                    # check if that box is never met before -> append to queue and visited
+                    if (newX, newY) not in visited and maze[newX][newY] == '.':
+                        queue.append((newX, newY))
+                        visited.add((newX, newY))
                         
                         # if the exit box != entrance -> return num steps
                         if newX == 0 or newX == m - 1 or newY == 0 or newY == n - 1:
