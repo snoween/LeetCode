@@ -6,8 +6,8 @@ class Solution:
         - Space comp: O(M x N)
         """
         # check if original color = target color -> return image
-        original_color = image[sr][sc]
-        if original_color == color:
+        originalColor = image[sr][sc]
+        if originalColor == color:
             return image
 
         row, col = len(image), len(image[0])
@@ -24,7 +24,9 @@ class Solution:
                 newY = y + coor[1]
 
                 # check valid box
-                if 0 <= newX < row and 0 <= newY < col and image[newX][newY] == original_color:
+                if not(0 <= newX < row and 0 <= newY < col):
+                    continue
+                if image[newX][newY] == originalColor:
                     image[newX][newY] = color
                     stack.append((newX, newY))
                  
