@@ -30,11 +30,12 @@ class Solution:
                 
                 if not (0 <= newX < rows and 0 <= newY < cols):
                     continue
+                if dist[newX][newY] != -1:
+                    continue
 
-                if dist[newX][newY] == -1:
-                    # update neighbor distance
-                    dist[newX][newY] = dist[x][y] + 1
-                    maxDist = max(maxDist, dist[newX][newY])
-                    queue.append((newX, newY))
+                # update neighbor distance
+                dist[newX][newY] = dist[x][y] + 1
+                maxDist = max(maxDist, dist[newX][newY])
+                queue.append((newX, newY))
         
         return maxDist
