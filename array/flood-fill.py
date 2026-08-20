@@ -19,15 +19,17 @@ class Solution:
         while stack:
             x, y = stack.pop()
             # get neighbor values -> switch color
-            for coor in DIRS:
-                newX = x + coor[0]
-                newY = y + coor[1]
+            for dx, dy in DIRS:
+                newX = x + dx
+                newY = y + dy
 
                 # check valid box
                 if not(0 <= newX < row and 0 <= newY < col):
                     continue
-                if image[newX][newY] == originalColor:
-                    image[newX][newY] = color
-                    stack.append((newX, newY))
+                if image[newX][newY] != originalColor:
+                    continue
+                    
+                image[newX][newY] = color
+                stack.append((newX, newY))
                  
         return image
