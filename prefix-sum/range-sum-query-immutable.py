@@ -4,10 +4,10 @@ class NumArray:
         self.nums = nums
 
     def sumRange(self, left: int, right: int) -> int:
-        output = 0
-        for i in range(left, right+1):
-            output += self.nums[i]
-        return output
+        total = 0
+        for i in range(left, right + 1):
+            total += self.nums[i]
+        return total
 
 # Your NumArray object will be instantiated and called as such:
 # obj = NumArray(nums)
