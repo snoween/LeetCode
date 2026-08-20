@@ -24,9 +24,9 @@ class Solution:
         while queue:
             x, y = queue.popleft()
             # get neighbors
-            for coor in DIRS:
-                newX = x + coor[0]
-                newY = y + coor[1]
+            for dx, dy in DIRS:
+                newX = x + dx
+                newY = y + dy
                 
                 if not (0 <= newX < rows and 0 <= newY < cols):
                     continue
