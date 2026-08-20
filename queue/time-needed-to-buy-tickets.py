@@ -10,11 +10,11 @@ class Solution:
             tickets[curr] -= 1
             time += 1
 
-            # if k-th person done -> return time
+            # if k-th person is done -> return time
             if curr == k and tickets[curr] == 0:
                 return time
             
-            # back to queue
+            # back to queue if still need to buy tickets
             if tickets[curr] > 0:
                 queue.append(curr)
         
