@@ -3,6 +3,10 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
+        """
+        - Time comp: O(M x N)
+        - Space comp: O(1)
+        """
         m, n = len(matrix), len(matrix[0])
         is_col = False      # mark for the first col
 
