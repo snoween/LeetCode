@@ -6,6 +6,7 @@ class Solution:
         """
         - Time comp: O(M x N)
         - Space comp: O(1)
+        - Idea: if any row/col has 0 -> mark on edge aka first row/col = 0
         """
         m, n = len(matrix), len(matrix[0])
         is_col = False      # mark for the first col
