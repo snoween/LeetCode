@@ -13,7 +13,6 @@ class Solution:
                     set_row.add(r)
                     set_col.add(c)
 
-        print(set_row, set_col)
         # loop through the 2 sets -> change all elements in those rows, cols to 0
         for x in range(m):
             if x in set_row:
@@ -24,5 +23,3 @@ class Solution:
             if y in set_col:
                 for x in range(m):
                     matrix[x][y] = 0
-
-                
