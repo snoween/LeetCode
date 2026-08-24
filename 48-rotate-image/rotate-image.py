@@ -3,6 +3,11 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
+        """
+        - Time comp: O(N x N)
+        - Space comp: O(1) - modify in place
+        - Idea: transpose -> reverse row
+        """
         n = len(matrix)
 
         # loop col starts from 1 to avoid swap 1 element twice
