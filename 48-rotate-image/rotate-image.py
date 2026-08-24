@@ -10,5 +10,5 @@ class Solution:
             for c in range(r + 1, n):
                 matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
             # reverse row
-            matrix[r] = matrix[r][::-1]
+            matrix[r].reverse()
             
