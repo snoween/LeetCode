@@ -7,9 +7,9 @@ class Solution:
         for num in nums:
             current_sum += num
             # check if current_sum - k in dict or not
-            diff = current_sum - k
-            if diff in prefix_count:
-                count += prefix_count[diff]
+            last_prefix = current_sum - k
+            if last_prefix in prefix_count:
+                count += prefix_count[last_prefix]
             
             # if current_sum not in dict -> default val = 0, else -> get value of that key 
             prefix_count[current_sum] = prefix_count.get(current_sum, 0) + 1
