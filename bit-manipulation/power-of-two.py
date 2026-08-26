@@ -5,4 +5,4 @@ class Solution:
                 return False
             n = int(n/2)
         
-        return True if n == 1 else False
+        return (n == 1)
