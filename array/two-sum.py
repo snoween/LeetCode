@@ -5,6 +5,7 @@ class Solution:
         - Space comp: O(N)
         - Idea: use dict to save seen num with its index. Loop through
         array, if target - curr_num in dict -> return index of both old + curr num
+        - Edge cases: None
         """
 
         seen = defaultdict(int)
