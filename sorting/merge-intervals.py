@@ -1,28 +1,19 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        heap_intervals = []
-        start_end = defaultdict(int)
+        """
+        - Idea: sort input -> append if interval[0] > last interval[1]
+        Update end if interval[0] < last interval[1]
+        - Time comp: O(N)
+        - Space comp: O(N)
+        """
+        # sort input
+        intervals.sort(key = lambda x: x[0])
+        merged = []
 
         for interval in intervals:
-            heapq.heappush(heap_intervals, tuple(interval))
-        
-        curr_start, curr_end = heapq.heappop(heap_intervals)
-        start_end[curr_start] = curr_end
-        while heap_intervals:
-            start, end = heapq.heappop(heap_intervals)
-            
-            if start <= curr_end and end >= curr_end:
-                start_end[curr_start] = end
-            elif start <= curr_end and end <= curr_end:
-                continue
+            if not merged or interval[0] > merged[-1][1]:
+                merged.append(interval)
             else:
-                start_end[start] = end
-                curr_start = start
-                curr_end = end
+                merged[-1][1] = max(interval[1], merged[-1][1])
         
-        
-        results = []
-        for key, val in start_end.items():
-            results.append([key, val])
-        
-        return results
+        return merged
