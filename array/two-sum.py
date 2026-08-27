@@ -1,11 +1,18 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        nums_dict = {}  
+        """
+        - Time comp: O(N)
+        - Space comp: O(N)
+        - Idea: use dict to save seen num with its index. Loop through
+        array, if target - curr_num in dict -> return index of both old + curr num
+        """
 
-        for i, num in enumerate(nums):
-            complement = target - num
-            if complement in nums_dict:
-                return [nums_dict[complement], i]
-            nums_dict[num] = i
+        seen = defaultdict()
 
-        return []
+        for i, curr_num in enumerate(nums):
+            diff = target - curr_num
+            
+            if diff in seen:
+                return [i, seen[diff]]
+
+            seen[curr_num] = i
