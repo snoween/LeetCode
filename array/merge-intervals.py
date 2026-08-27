@@ -10,12 +10,16 @@ class Solution:
         start_end[curr_start] = curr_end
         while heap_intervals:
             start, end = heapq.heappop(heap_intervals)
-            if start <= curr_end:
+            
+            if start <= curr_end and end >= curr_end:
                 start_end[curr_start] = end
+            elif start <= curr_end and end <= curr_end:
+                continue
             else:
                 start_end[start] = end
                 curr_start = start
                 curr_end = end
+        
         
         results = []
         for key, val in start_end.items():
