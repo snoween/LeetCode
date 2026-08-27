@@ -7,11 +7,11 @@ class Solution:
         array, if target - curr_num in dict -> return index of both old + curr num
         """
 
-        seen = defaultdict()
+        seen = defaultdict(int)
 
         for i, curr_num in enumerate(nums):
             diff = target - curr_num
-            
+
             if diff in seen:
                 return [i, seen[diff]]
 
