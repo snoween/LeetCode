@@ -35,8 +35,8 @@ class Solution:
             # loop through all neighbors of current node
             for neighbor in adj[node]:
                 # if that neighbor has cycle -> return False
-                if not dfs(neighbor):
-                    return False
+                dfs(neighbor)
+                    
             
             # if all neighbors are valid -> change state of current node to 2
             visit[node] = 2
