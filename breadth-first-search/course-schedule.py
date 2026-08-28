@@ -9,7 +9,7 @@ class Solution:
         adj = defaultdict(list)
         for course, preq in prerequisites:
             adj[preq].append(course)
-            
+
         # set list of visit with [0] elements = num course
         visit = [0] * numCourses
 
@@ -30,7 +30,7 @@ class Solution:
 
             # loop all neighbors of that node
             for neighbor in adj[node]:
-                # check if not DFS(neighbor) -> cycle -> return False
+                # check if any of the neighbors has cycle -> stop checking
                 if not dfs(neighbor):
                     return False
             
