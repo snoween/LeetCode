@@ -9,10 +9,9 @@ class Solution:
         adj = defaultdict(list)
         for course, preq in prerequisites:
             adj[preq].append(course)
+            
         # set list of visit with [0] elements = num course
         visit = [0] * numCourses
-        # set result = []
-        result = []
 
         # func DFS on a node, return bool
         def dfs(node) -> bool:
@@ -37,9 +36,6 @@ class Solution:
             
             # if all neighbors are fine -> change state of current node to 2 - done
             visit[node] = 2
-
-            # append that node to result
-            result.append(node)
 
             # return True
             return True
