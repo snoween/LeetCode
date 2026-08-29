@@ -20,7 +20,7 @@ class Solution:
                     findDiff = True
                     break
             
-            if not findDiff and len(words[i]) > len(words[j]):
+            if not findDiff and len(words[i]) > len(words[i+1]):
                 return ""
         print(in_degree)
         queue = deque()
