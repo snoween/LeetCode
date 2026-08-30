@@ -14,9 +14,8 @@ class Solution:
                 for x, y in DIRS:
                     n_x = i + x
                     n_y = j + y
-                    
-                    if n_x < n and n_y < n:
-                        curr = max(curr, grid[n_x][n_y])
+                    curr = max(curr, grid[n_x][n_y])
 
                 new_grid[i][j] = curr
+
         return new_grid
