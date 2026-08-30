@@ -19,6 +19,7 @@ class Solution:
         results = []
 
         for value in file_content.values():
-            results.append(value)
+            if len(value) > 1:
+                results.append(value)
         
         return results
