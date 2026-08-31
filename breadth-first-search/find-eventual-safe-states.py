@@ -1,10 +1,5 @@
 class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
-        terminal_node = set()
-        for i, edge in enumerate(graph):
-            if not edge:
-                terminal_node.add(i)
-        
         in_degree = defaultdict(int)
         adj = defaultdict(list)
 
@@ -19,14 +14,13 @@ class Solution:
                 queue.append(i)
         
         ans = []
-
         while queue:
             curr = queue.popleft()
-            ans.append(curr)
+            heapq.heappush(ans, curr)
 
             for neighbor in adj[curr]:
                 in_degree[neighbor] -= 1
                 if in_degree[neighbor] == 0:
                     queue.append(neighbor)
         
-        return sorted(ans)
+        return ans
