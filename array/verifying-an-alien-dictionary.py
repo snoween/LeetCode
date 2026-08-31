@@ -2,7 +2,7 @@ class Solution:
     def isAlienSorted(self, words: List[str], order: str) -> bool:
         adj = defaultdict()
 
-        for i in range(len(order) - 1):
+        for i in range(len(order)):
             adj[order[i]] = set(order[i + 1::])
         
         for j in range(len(words) - 1):
