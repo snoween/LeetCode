@@ -31,8 +31,8 @@ class Solution:
 
         # get final answer
         ans = []
-        for i, node in enumerate(safe_node):
-            if node:
-                ans.append(i)
+        for node, state in enumerate(safe_node):
+            if state:
+                ans.append(node)
 
         return ans
