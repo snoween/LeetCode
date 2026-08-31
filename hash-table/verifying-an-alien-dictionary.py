@@ -25,7 +25,4 @@ class Solution:
             if not findDiff and len(curr_word) > len(next_word):
                 return False
             
-            return True
-
-
-
+        return True
