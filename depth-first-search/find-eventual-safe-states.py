@@ -5,17 +5,28 @@ class Solution:
             if not edge:
                 terminal_node.add(i)
         
-        safe_node = []
+        in_degree = defaultdict(int)
+        adj = defaultdict(list)
 
-        for i, edge in enumerate(graph):
-            is_path = True
-            for ele in edge:
-                if ele not in terminal_node:
-                    is_path = False
-                    break
-            
-            if is_path:
-                safe_node.append(i)
+        for i, next_edges in enumerate(graph):
+            for edge in next_edges:
+                adj[edge].append(i)
+                in_degree[i] += 1
         
-        print(safe_node)
-        return safe_node
+        queue = deque()
+        for i in range(len(graph)):
+            if in_degree[i] == 0:  
+                queue.append(i)
+        
+        ans = []
+
+        while queue:
+            curr = queue.popleft()
+            ans.append(curr)
+
+            for neighbor in adj[curr]:
+                in_degree[neighbor] -= 1
+                if in_degree[neighbor] == 0:
+                    queue.append(neighbor)
+        
+        return sorted(ans)
