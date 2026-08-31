@@ -5,7 +5,8 @@ class Solution:
         """
         adj = defaultdict(list)
         in_degree = defaultdict(int)
-        
+        safe_node = [False] * len(graph)
+
         # build graph and in_degree
         for i, next_edges in enumerate(graph):
             for edge in next_edges:
@@ -19,14 +20,19 @@ class Solution:
                 queue.append(i)
         
         # loop through queue and check neighbors of current node
-        ans = []
         while queue:
             curr = queue.popleft()
-            ans.append(curr)
+            safe_node[curr] = True
 
             for neighbor in adj[curr]:
                 in_degree[neighbor] -= 1
                 if in_degree[neighbor] == 0:
                     queue.append(neighbor)
-        
-        return sorted(ans)
+
+        # get final answer
+        ans = []
+        for i, node in enumerate(safe_node):
+            if node:
+                ans.append(i)
+
+        return ans
