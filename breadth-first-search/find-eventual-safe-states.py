@@ -1,5 +1,8 @@
 class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
+        """
+        - Idea: do as normal but for reversed graph
+        """
         adj = defaultdict(list)
         in_degree = defaultdict(int)
         
@@ -8,7 +11,7 @@ class Solution:
             for edge in next_edges:
                 adj[edge].append(i)
                 in_degree[i] += 1
-        
+
         # build queue with starting points
         queue = deque()
         for i in range(len(graph)):
