@@ -15,8 +15,8 @@ class Solution:
                     if next_word[k] not in adj[curr_word[k]]:
                         return False
                     break
-            else:
-                if len(curr_word) > len(next_word):
-                    return False
+            
+            if len(curr_word) > len(next_word):
+                return False
                
         return True
