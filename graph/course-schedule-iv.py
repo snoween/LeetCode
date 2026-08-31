@@ -12,21 +12,20 @@ class Solution:
             if in_degree[i] == 0:
                 queue.append(i)
         
-        list_courses = []
+        prereq = [set() for _ in range(numCourses)]
         while queue:
             curr = queue.popleft()
-            list_courses.append(curr)
 
             for neighbor in adj[curr]:
                 in_degree[neighbor] -= 1
+                prereq[neighbor].add(curr)
+                prereq[neighbor].update(prereq[curr])
+
                 if in_degree[neighbor] == 0:
                     queue.append(neighbor)
         
         ans = []
         for preq, course in queries:
-            if list_courses[preq] < list_courses[course]:
-                ans.append(True)
-            else:
-                ans.append(False)
+            ans.append(preq in prereq[course])
         
         return ans
