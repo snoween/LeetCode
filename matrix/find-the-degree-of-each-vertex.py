@@ -4,10 +4,6 @@ class Solution:
         ans = [0] * n
         
         for i in range(n):
-            degree = 0
-            for j in range(n):
-                degree += int(matrix[i][j] == 1)
-                
-            ans[i] = degree
-
+            ans[i] = sum(matrix[i])
+            
         return ans
