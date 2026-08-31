@@ -18,8 +18,8 @@ class Solution:
 
             for neighbor in adj[curr]:
                 in_degree[neighbor] -= 1
-                prereq[neighbor].add(curr)
-                prereq[neighbor].update(prereq[curr])
+                prereq[neighbor].add(curr)      # neighbor node takes previous node which is curr
+                prereq[neighbor].update(prereq[curr])       # neighbor node takse all previous nodes of curr
 
                 if in_degree[neighbor] == 0:
                     queue.append(neighbor)
