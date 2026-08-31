@@ -9,14 +9,17 @@ class Solution:
             curr_word = words[j]
             next_word = words[j + 1]
             min_len = min(len(curr_word), len(next_word))
+            findDiff = False
 
             for k in range(min_len):
                 if curr_word[k] != next_word[k]:
                     if next_word[k] not in adj[curr_word[k]]:
                         return False
+                    
+                    findDiff = True
                     break
-            
-            if len(curr_word) > len(next_word):
-                return False
+ 
+            if not findDiff and len(curr_word) > len(next_word):
+                    return False
                
         return True
