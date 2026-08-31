@@ -1,10 +1,8 @@
 class Solution:
     def findAllRecipes(self, recipes: List[str], ingredients: List[List[str]], supplies: List[str]) -> List[str]:
-        recipes_set = set(recipes)
-        # build a graph of each ingredient -> recipe
-        # build in_degree of each recipe
-        graph = defaultdict(list)
-        in_degree = defaultdict(int)
+        recipes_set = set(recipes)      # get set of recipes to look up later
+        graph = defaultdict(list)       # build a graph of each ingredient -> recipe
+        in_degree = defaultdict(int)    # build in_degree of each recipe
 
         for i in range(len(ingredients)):
             # get unique set of ingredients to avoid increasing the in_degree twice
@@ -20,18 +18,15 @@ class Solution:
 
         # loop through queue
         while queue:
-            # popleft queue to get current supply
-            curr = queue.popleft()
-            # if curr = recipes -> append to ans
-            if curr in recipes_set:
+            curr = queue.popleft()      # popleft queue to get current supply
+            
+            if curr in recipes_set:     # if curr = recipes -> append to ans
                 ans.append(curr)
 
             # loop through all neighbors of that supply
             for neighbor in graph[curr]:
-                # decrease the in_degree of that neighbor by 1
-                in_degree[neighbor] -= 1
-                # append to queue if that in_degree = 0
-                if in_degree[neighbor] == 0:
+                in_degree[neighbor] -= 1    # decrease the in_degree of that neighbor by 1
+                if in_degree[neighbor] == 0:    # append to queue if that in_degree = 0
                     queue.append(neighbor)
         
         # return ans
