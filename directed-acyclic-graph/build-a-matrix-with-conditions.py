@@ -4,9 +4,6 @@ class Solution:
         - Idea: colConditions: from left to right
         - rowConditions: from top to bottom
         """
-        adj_row = []
-        adj_col = []
-
         def get_graph(conditions: List[List(int)]):
             adj = defaultdict(list)
             in_degree = defaultdict(int)
@@ -20,7 +17,7 @@ class Solution:
                 if in_degree[i] == 0:
                     queue.append(i)
             
-            order = []
+            nodes = []
             while queue:
                 curr = queue.popleft()
                 order.append(curr)
@@ -30,21 +27,25 @@ class Solution:
                     if in_degree[neighbor] == 0:
                         queue.append(neighbor)
 
-            return order
+            return nodes
 
-        adj_row = get_graph(rowConditions)
-        adj_col = get_graph(colConditions)
+        nodes_row = []
+        nodes_col = []
+        nodes_row = get_graph(rowConditions)
+        nodes_col = get_graph(colConditions)
 
-        if len(adj_row) != k or len(adj_col) != k:
+        # check if the list of nodes in row/col has cycle or not
+        if len(nodes_row) != k or len(nodes_col) != k:
             return []
         
+        # get the coordinates for each node
         coor = defaultdict(list)
-
         for i in range(k):
-            coor[adj_row[i]].append(i)
+            coor[nodes_row[i]].append(i)
         for j in range(k):
-            coor[adj_col[j]].append(j)
+            coor[nodes_col[j]].append(j)
         
+        # Update matrix k x k
         matrix = [[0] * k for _ in range(k)]
         for node, val in coor.items():
             x, y = val
