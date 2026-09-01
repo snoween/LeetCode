@@ -40,7 +40,6 @@ class Solution:
         
         coor = defaultdict(list)
 
-        print(adj_row, adj_col)
         for i in range(k):
             coor[adj_row[i]].append(i)
         for j in range(k):
@@ -48,6 +47,7 @@ class Solution:
         
         matrix = [[0] * k for _ in range(k)]
         for node, val in coor.items():
-            matrix[val[0]][val[1]] = node
+            x, y = val
+            matrix[x][y] = node
         
         return matrix
