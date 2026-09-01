@@ -20,7 +20,7 @@ class Solution:
             nodes = []
             while queue:
                 curr = queue.popleft()
-                order.append(curr)
+                nodes.append(curr)
 
                 for neighbor in adj[curr]:
                     in_degree[neighbor] -= 1
