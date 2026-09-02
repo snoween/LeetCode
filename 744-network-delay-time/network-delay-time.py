@@ -11,7 +11,6 @@ class Solution:
 
         # build init heap with starting point k
         heap = [(0, k)]
-        max_time = 0
         while heap:
             curr_dist, curr_node = heapq.heappop(heap)
 
@@ -25,5 +24,6 @@ class Solution:
                     dist[v] = dist[curr_node] + w
                     heapq.heappush(heap, (dist[v], v))
         
+        # get max_time 
         max_time = max(dist.values())
         return max_time if max_time != inf else -1
