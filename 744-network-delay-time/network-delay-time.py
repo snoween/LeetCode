@@ -14,7 +14,7 @@ class Solution:
         while heap:
             curr_dist, curr_node = heapq.heappop(heap)
 
-            # if the current distance > last distance -> continue
+            # if the current distance > last distance of that node -> continue
             if curr_dist > dist[curr_node]:
                 continue
             
