@@ -4,7 +4,7 @@ class Solution:
     def countComponents(self, n: int, edges: List[List[int]]) -> int:
         parent = {i : i for i in range(n)}
         size = {i : 1 for i in range(n)}
-
+        connected = n
         def find(x):
             if parent[x] != x:
                 parent[x] = find(parent[x])
@@ -24,9 +24,8 @@ class Solution:
                 size[parentX] += size[parentY]
             
         for u, v in edges:
-            union(u, v)
-        count = 0
-        for root, val in parent.items():
-            if root == val:
-                count += 1
-        return count
+
+            if not union(u, v):
+                connected -= 1
+
+        return connected
