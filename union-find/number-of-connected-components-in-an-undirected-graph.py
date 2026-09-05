@@ -14,7 +14,7 @@ class Solution:
             parentX, parentY = find(x), find(y)
 
             if parentX == parentY:
-                return
+                return False
             
             if size[parentX] < size[parentY]:
                 parent[parentX] = parentY
@@ -23,9 +23,10 @@ class Solution:
                 parent[parentY] = parentX
                 size[parentX] += size[parentY]
             
+            return True
         for u, v in edges:
 
-            if not union(u, v):
+            if union(u, v):
                 connected -= 1
 
         return connected
