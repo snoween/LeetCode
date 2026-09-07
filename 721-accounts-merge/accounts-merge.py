@@ -36,16 +36,18 @@ class Solution:
                 email_to_name[email] = name
                 union(acc[1], email)    # merge to 1 tree
         
+        # build dict of components
         components = defaultdict(list)
         for email in parent:
             root = find(email)
             components[root].append(email)
         
+        # get result
         result = []
         for root, emails in components.items():
             name = email_to_name[root]
             sorted_emails = sorted(emails)
-            result.append([name] + sorted_emails)
+            result.append([name] + sorted_emails)       # list name + list sorted mails
         
         return result
                 
