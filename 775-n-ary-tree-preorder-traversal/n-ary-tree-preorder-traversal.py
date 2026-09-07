@@ -16,7 +16,9 @@ class Solution:
         while stack:
             node = stack.pop()
             result.append(node.val)
-            for i in range(len(node.children) - 1, -1, -1):
+            # Push children from right -> left to stack 
+            # --> later when pop from left -> right
+            for i in range(len(node.children) - 1, -1, -1):     
                 stack.append(node.children[i])
         
         return result
