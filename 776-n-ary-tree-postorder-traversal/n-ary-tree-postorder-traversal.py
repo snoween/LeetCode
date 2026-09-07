@@ -18,9 +18,9 @@ class Solution:
             node = stack.pop()
             result.append(node.val)
 
-            if not node.children:
+            if not node.children:   # in case node.children = []
                 continue
-                
+
             for child in node.children:
                 stack.append(child)
         
