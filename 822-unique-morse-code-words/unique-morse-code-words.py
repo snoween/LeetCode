@@ -5,7 +5,6 @@ class Solution:
         letter = {chr(ord('a') + i): morse[i] for i in range(26)}
         
         set_code = set()
-
         for word in words:
             code = []
             for char in word:
