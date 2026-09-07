@@ -17,6 +17,10 @@ class Solution:
         while stack:
             node = stack.pop()
             result.append(node.val)
+
+            if not node.children:
+                continue
+                
             for child in node.children:
                 stack.append(child)
         
