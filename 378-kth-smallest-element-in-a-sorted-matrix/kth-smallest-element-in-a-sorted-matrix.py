@@ -1,8 +1,6 @@
 class Solution:
     def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
-        n = len(matrix)
         flatten = []
-
         for row in matrix:
             flatten.extend(row)
         
