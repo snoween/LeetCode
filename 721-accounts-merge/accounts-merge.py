@@ -10,7 +10,6 @@ class Solution:
         
         def union(x, y):
             parentX, parentY = find(x), find(y)
-
             if parentX == parentY:
                 return False
             
