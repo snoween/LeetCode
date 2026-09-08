@@ -9,13 +9,14 @@ class Solution:
         queue = deque([root])
 
         while queue:
-            curr = queue.popleft()
-            if curr.left:
-                queue.append(curr.left)
-                if not curr.left.left and not curr.left.right:
-                    leftmost = curr.left.val
-            
-            if curr.right:
-                queue.append(curr.right)
+            n = len(queue)
+            mostleft = queue[0].val
+
+            for _ in range(n):
+                curr = queue.popleft()
+                if curr.left:
+                    queue.append(curr.left)
+                if curr.right:
+                    queue.append(curr.right)
         
-        return leftmost
+        return mostleft
