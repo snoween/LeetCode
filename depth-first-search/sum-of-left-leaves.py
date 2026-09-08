@@ -16,7 +16,10 @@ class Solution:
             curr = queue.popleft()
             if curr.left:
                 queue.append(curr.left)
-                left_sum += curr.left.val
+                # check if that node is child or not 
+                if not curr.left.left and not curr.left.right:
+                    left_sum += curr.left.val
+                
             if curr.right:
                 queue.append(curr.right)
         
