@@ -1,16 +1,23 @@
 class Solution:
     def makeConnected(self, n: int, connections: List[List[int]]) -> int:
-        if len(connections) < n - 1:
-            return -1
+        connected_components = n
+        edges = len(list(connections))
 
+        # if connected components > edges - 1 -> not enough cables to connect all machines
+        if connected_components - 1 > edges:
+            return -1
+        
+        # build parent, size
         parent = {i: i for i in range(n)}
         size = {i: 1 for i in range(n)}
 
+        # func to find parent, if same tree -> change to same parent
         def find(x):
             if parent[x] != x:
                 parent[x] = find(parent[x])
             return parent[x]
         
+        # func to merge trees
         def union(x, y):
             parentX, parentY = find(x), find(y)
 
@@ -25,10 +32,10 @@ class Solution:
                 size[parentX] += size[parentY]
             
             return True
+
+        # build connection 
+        for x, y in connections:
+            if union(x, y):
+                connected_components -= 1
         
-        components = n
-        for u, v in connections:
-            if union(u, v):
-                components -= 1
-        
-        return components - 1
+        return connected_components - 1
