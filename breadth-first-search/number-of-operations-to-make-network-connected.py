@@ -32,6 +32,6 @@ class Solution:
         connected_components = len(set(parent.values()))
         print(parent)
         if connected_components - 1 <= edges:
-            return edges
+            return connected_components - 1
         
         return -1
