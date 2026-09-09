@@ -1,7 +1,7 @@
 class Solution:
     def makeConnected(self, n: int, connections: List[List[int]]) -> int:
         edges = len(connections)
-
+        connections.sort()
         parent = {i: i for i in range(n)}
         size = {i: 1 for i in range(n)}
 
@@ -30,7 +30,8 @@ class Solution:
                 edges -= 1
         
         connected_components = len(set(parent.values()))
-        if connected_components - 1 == edges:
+        print(parent)
+        if connected_components - 1 <= edges:
             return edges
         
         return -1
