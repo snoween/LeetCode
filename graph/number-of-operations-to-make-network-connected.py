@@ -3,7 +3,7 @@ class Solution:
         connected_components = n
         edges = len(list(connections))
 
-        # if connected components - 1 > edges -> not enough cables to connect all machines
+        # n machines need at least n-1 cables -> if required cables > recent cables -> False
         if connected_components - 1 > edges:
             return -1
         
