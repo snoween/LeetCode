@@ -3,7 +3,7 @@ class Solution:
         connected_components = n
         edges = len(list(connections))
 
-        # if connected components > edges - 1 -> not enough cables to connect all machines
+        # if connected components - 1 > edges -> not enough cables to connect all machines
         if connected_components - 1 > edges:
             return -1
         
@@ -38,4 +38,4 @@ class Solution:
             if union(x, y):
                 connected_components -= 1
         
-        return connected_components - 1
+        return connected_components - 1     # remaining edges to connect all of them
