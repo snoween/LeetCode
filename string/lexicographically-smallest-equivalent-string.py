@@ -1,7 +1,7 @@
 class Solution:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
         parent = {chr(i): chr(i) for i in range(ord('a'), ord('z') + 1)}
-        print(parent)
+
         def find(x):
             if parent[x] != x:
                 parent[x] = find(parent[x])
@@ -12,7 +12,7 @@ class Solution:
             if parentX == parentY: 
                 return 
             
-            if parentX < parentY:
+            if parentX < parentY:       # Use smaller character as root
                 parent[parentY] = parentX
             else:
                 parent[parentX] = parentY
