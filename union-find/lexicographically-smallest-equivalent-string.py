@@ -31,10 +31,11 @@ class Solution:
                 parent[parentY] = parentX
                 size[parentX] += size[parentY]
         
-        
+        # group characters
         for i in range(n):
             union(s1[i], s2[i])
         
+        # group all elements with same root
         lex_order = defaultdict(list)
         for char, root in parent.items():
             lex_order[root].append(char)
@@ -44,6 +45,7 @@ class Solution:
             if ele not in parent:
                 ans.append(ele)
                 continue
+
             parentEle = find(ele)
             ans.append(min(lex_order[parentEle]))
         
