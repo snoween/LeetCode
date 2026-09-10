@@ -24,6 +24,5 @@ class Solution:
             return True
         
         for u, v in edges:
-            
             if not union(u, v):
                 return [u, v]
