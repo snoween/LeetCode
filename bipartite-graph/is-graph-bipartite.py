@@ -14,7 +14,6 @@ class Solution:
         
         def union(x, y):
             parentX, parentY = find(x), find(y)
-
             if parentX != parentY:
                 parent[parentX] = parentY
         
@@ -22,8 +21,8 @@ class Solution:
             for v in graph[u]:
                 if find(u) == find(v):
                     return False
-                
-                union(graph[u][0], v)
+
+                union(graph[u][0], v)   # Merge all nodes in graph[u]
         
         return True
 
