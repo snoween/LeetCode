@@ -1,5 +1,8 @@
 class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
+        """
+        Method: use color array to check
+        """
         n = len(graph)
         color = [0] * n
 
@@ -10,9 +13,7 @@ class Solution:
 
                 while queue:
                     curr = queue.popleft()
-
                     for neighbor in graph[curr]:
-                        # if next vertex has same val -> return false
                         if color[neighbor] == color[curr]:
                             return False
                         
