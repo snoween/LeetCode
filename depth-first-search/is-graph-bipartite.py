@@ -4,7 +4,6 @@ class Solution:
         Method: Union Find
         """
         n = len(graph)
-
         parent = {i: i for i in range(n)}
 
         def find(x): 
