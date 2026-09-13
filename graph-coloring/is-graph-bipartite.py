@@ -1,24 +1,29 @@
 class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
         """
-        Method: use color array to check
+        Method: Union Find
         """
         n = len(graph)
-        color = [0] * n
 
-        for i in range(n):
-            if color[i] == 0:
-                color[i] = 1
-                queue = deque([i])
+        parent = {i: i for i in range(n)}
 
-                while queue:
-                    curr = queue.popleft()
-                    for neighbor in graph[curr]:
-                        if color[neighbor] == color[curr]:
-                            return False
-                        
-                        if color[neighbor] == 0:
-                            color[neighbor] = -color[curr]
-                            queue.append(neighbor)
+        def find(x): 
+            if parent[x] != x:
+                parent[x] = find(parent[x])
+            return parent[x]
+        
+        def union(x, y):
+            parentX, parentY = find(x), find(y)
+
+            if parentX != parentY:
+                parent[parentX] = parentY
+        
+        for u in range(n):
+            for v in graph[u]:
+                if find(u) == find(v):
+                    return False
+                
+                union(graph[u][0], v)
         
         return True
+
