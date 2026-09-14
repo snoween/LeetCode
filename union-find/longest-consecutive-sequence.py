@@ -5,19 +5,21 @@ class Solution:
         - Starting number = Current number - 1
         - Update the length while curr_num + 1 in nums
         """
-        nums_set = set(nums)
+        set_nums = set(nums)
         max_len = 0
 
-        for num in nums_set:
-            # if starting num not in nums_set -> curr = starting
-            if num - 1 not in nums_set:
-                init_num = num
-                curr_len = 1
+        # loop through nums
+        for curr in set_nums:
+            # check if curr is starting point
+            if curr - 1 not in set_nums:
+                start = curr
+                curr_len = 0
 
-                while init_num + 1 in nums_set:
-                    init_num += 1
+                while start in set_nums:
                     curr_len += 1
-                
+                    start += 1
+                    print(curr_len)
+                # update max len
                 max_len = max(max_len, curr_len)
         
         return max_len
