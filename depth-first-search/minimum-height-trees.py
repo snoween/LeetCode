@@ -28,7 +28,7 @@ class Solution:
             if val == 1:
                 queue.append(node)
 
-        # BFS layer by layer, stop while loop when n <= 2
+        # BFS layer by layer, stop while loop when n <= 2, remaining nodes are central points aka valid roots
         while n > 2:
             length = len(queue)
 
