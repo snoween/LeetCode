@@ -5,21 +5,27 @@ class Solution:
         - Starting number = Current number - 1
         - Update the length while curr_num + 1 in nums
         """
-        set_nums = set(nums)
-        max_len = 0
+        parent = {num: num for num in nums}
+        size = {num: 1 for num in nums}
 
-        # loop through nums
-        for curr in set_nums:
-            # check if curr is starting point
-            if curr - 1 not in set_nums:
-                start = curr
-                curr_len = 0
-
-                while start in set_nums:
-                    curr_len += 1
-                    start += 1
-                    print(curr_len)
-                # update max len
-                max_len = max(max_len, curr_len)
+        def find(x):
+            if parent[x] != x:
+                parent[x] = find(parent[x])
+            return parent[x]
         
-        return max_len
+        def union(x, y):
+            parentX, parentY = find(x), find(y)
+
+            if parentX != parentY:
+                parent[parentX] = parentY
+                size[parentY] += size[parentX]
+        
+        # loop through parent
+        for num in parent:
+            if num - 1 not in parent:
+                start = num
+                while start in parent:
+                    union(num, start)
+                    start += 1
+        
+        return max(size.values())
