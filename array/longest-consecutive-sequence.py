@@ -5,6 +5,9 @@ class Solution:
         - Starting number = Current number - 1
         - Update the length while curr_num + 1 in nums
         """
+        if not nums:
+            return 0
+            
         parent = {num: num for num in nums}
         size = {num: 1 for num in nums}
 
