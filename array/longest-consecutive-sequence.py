@@ -8,7 +8,7 @@ class Solution:
         nums_set = set(nums)
         max_len = 0
 
-        for num in nums:
+        for num in nums_set:
             # if starting num not in nums_set -> curr = starting
             if num - 1 not in nums_set:
                 init_num = num
