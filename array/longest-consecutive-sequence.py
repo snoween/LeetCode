@@ -33,5 +33,5 @@ class Solution:
         for num in parent:
             if num - 1 in parent:
                 union(num, num - 1)
-                
+
         return max(size.values())
