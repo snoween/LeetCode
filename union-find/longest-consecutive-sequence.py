@@ -7,7 +7,7 @@ class Solution:
         """
         if not nums:
             return 0
-            
+
         parent = {num: num for num in nums}
         size = {num: 1 for num in nums}
 
@@ -19,16 +19,19 @@ class Solution:
         def union(x, y):
             parentX, parentY = find(x), find(y)
 
-            if parentX != parentY:
+            if parentX == parentY:
+                return
+
+            if size[parentX] < size[parentY]:
                 parent[parentX] = parentY
                 size[parentY] += size[parentX]
+            else:
+                parent[parentY] = parentX
+                size[parentX] += size[parentY]
         
         # loop through parent
         for num in parent:
-            if num - 1 not in parent:
-                start = num
-                while start in parent:
-                    union(num, start)
-                    start += 1
-        
+            if num - 1 in parent:
+                union(num, num - 1)
+                
         return max(size.values())
