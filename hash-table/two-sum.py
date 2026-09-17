@@ -1,19 +1,15 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         """
-        - Time comp: O(N)
-        - Space comp: O(N)
-        - Idea: use dict to save seen num with its index. Loop through
-        array, if target - curr_num in dict -> return index of both old + curr num
-        - Edge cases: None
+        Time comp: O(N)
+        Space comp: O(N)
+        Method: hashmap
         """
+        num_idx = defaultdict(int)
 
-        seen = defaultdict(int)
-
-        for i, curr_num in enumerate(nums):
-            diff = target - curr_num
-
-            if diff in seen:
-                return [i, seen[diff]]
-
-            seen[curr_num] = i
+        for i, curr in enumerate(nums):
+            # Calculate the difference
+            diff = target - curr
+            if num_idx and diff in num_idx:
+                return [num_idx[diff], i]
+            num_idx[curr] = i
