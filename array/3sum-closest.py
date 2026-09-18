@@ -16,7 +16,6 @@ class Solution:
 
                 if nums[i] + nums[j] + nums[k] > target:
                     k -= 1
-                
                 else:
                     j += 1
         
