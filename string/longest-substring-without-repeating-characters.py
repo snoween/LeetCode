@@ -1,6 +1,6 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        seen = Counter()
+        seen = defaultdict(int)
         max_length = 0
         
         left = 0
