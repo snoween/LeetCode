@@ -6,7 +6,7 @@ class Solution:
                 return result
             
             if total == target:
-                result.append(list(list_num))
+                result.append(list_num[:])
                 return result
             
             for i in range(start_idx, len(candidates)):
