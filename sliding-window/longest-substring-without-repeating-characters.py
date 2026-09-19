@@ -1,20 +1,16 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        l = 0
-        seen = set()
-        ans = 0
-
-        # tăng right từ 0 -> cuối (trỏ vào char nằm cuối cùng trong window):
-        for r, char in enumerate(s):
-
-            #remove thanwfg char ra khoir seen trc
-            while char in seen:
-                seen.remove(s[l])
-                l += 1
-
-            # giaxn window theem r nayf
-            seen.add(char)
-            #cập nhật đồ dài lớn nhất có thể
-            ans = max(ans, r - l + 1)
-
-        return ans
+        seen = Counter()
+        max_length = 0
+        
+        left = 0
+        for right, char in enumerate(s):
+            seen[char] += 1
+                
+            while seen[char] > 1:
+                seen[s[left]] -= 1
+                left += 1
+            
+            max_length = max(max_length, right - left + 1)
+            
+        return max_length     
