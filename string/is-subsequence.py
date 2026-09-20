@@ -6,7 +6,7 @@ class Solution:
         
         k = 0
         for char in t:
-            if char == s[k]:
+            if k < len(s) and char == s[k]:
                 k += 1
         
         return k == len(s)
