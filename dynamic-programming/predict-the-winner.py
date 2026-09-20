@@ -19,4 +19,4 @@ class Solution:
             return max(take_left, take_right)
         
         #print(max_diff(left, right))
-        return max_diff(left, right) > 0
+        return max_diff(left, right) >= 0
