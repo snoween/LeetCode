@@ -17,7 +17,8 @@ class Solution:
         def backtrack(start_idx):
             if start_idx >= len(s):     # Done 1 time checking all str
                 result.append(path[:])
-
+                return 
+                
             for end in range(start_idx, len(s)):
                 sub_str = s[start_idx:end+1]
 
