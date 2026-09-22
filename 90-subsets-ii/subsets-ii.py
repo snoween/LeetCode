@@ -6,10 +6,10 @@ class Solution:
         result = []
         path = []
 
-        def backtrack(idx):
+        def backtrack(start_idx):
             result.append(path[:])
 
-            for i in range(idx, len(unique_nums)):
+            for i in range(start_idx, len(unique_nums)):
                 if freq[unique_nums[i]] == 0:
                     continue
                 
