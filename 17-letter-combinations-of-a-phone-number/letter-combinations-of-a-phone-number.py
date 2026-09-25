@@ -19,10 +19,10 @@ class Solution:
                 return
             
             curr_digit = digits[index]
-            list_letters = num_char[curr_digit]
+            letters = num_char[curr_digit]
 
-            for char in list_letters:
-                path.append(char)
+            for letter in letters:
+                path.append(letter)
                 backtrack(index + 1)
                 path.pop()
         
