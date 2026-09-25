@@ -19,9 +19,9 @@ class Solution:
                 return
             
             curr_digit = digits[index]
-            letters = num_char[curr_digit]
+            list_letters = num_char[curr_digit]
 
-            for char in letters:
+            for char in list_letters:
                 path.append(char)
                 backtrack(index + 1)
                 path.pop()
