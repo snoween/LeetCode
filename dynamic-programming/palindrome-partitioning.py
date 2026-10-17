@@ -1,28 +1,29 @@
 class Solution:
+    def is_palindrome(self, sub_str):
+        left, right = 0, len(sub_str) - 1
+
+        while left <= right:
+            if sub_str[left] != sub_str[right]:
+                return False
+            left += 1
+            right -= 1
+
+        return True
+
     def partition(self, s: str) -> list[list[str]]:
         result = []
         path = []
 
-        def is_palindrome(sub_str):
-            left, right = 0, len(sub_str) - 1
-            while left <= right:
-                if sub_str[left] == sub_str[right]:
-                    left += 1
-                    right -= 1
-                else:
-                    return False
-            return True
-
-        def backtrack(start):
-            if start >= len(s):
+        def backtrack(start_idx):
+            if start_idx >= len(s):     # Done 1 time checking all str
                 result.append(path[:])
-                return
-            
-            for end in range(start, len(s)):
-                sub_str = s[start:end + 1]
+                return 
+                
+            for end in range(start_idx, len(s)):
+                sub_str = s[start_idx:end+1]
 
-                if is_palindrome(sub_str):    # Check if palindrome, can compare sub_str == sub_str[::-1], no need 2 pointers if lazy
-                    path.append(sub_str)
+                if self.is_palindrome(sub_str):
+                    path.append(sub_str[:])
                     backtrack(end + 1)
                     path.pop()
         

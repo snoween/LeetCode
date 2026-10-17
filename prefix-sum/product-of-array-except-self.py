@@ -1,22 +1,18 @@
 class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
+    def productExceptSelf(self, nums: list[int]) -> list[int]:
+        """
+        Solution: Prefix product
+        Time: O(N)
+        Space: O(N)
+        """
         n = len(nums)
-        pref = [1] * n
-        suf = [1] * n
-        output = [1] * n
+        prefix = [1] * n
+        suffix = [1] * n
 
-        # Get prefix of each nums[i]
-        for i in range(n):
-            if i > 0:
-                pref[i] = pref[i-1] * nums[i-1]
+        for i in range(1, n):
+            prefix[i] = prefix[i - 1] * nums[i - 1]
         
-        # Get suffix of each nums[j]
-        for j in range(n-1, -1, -1):
-            if j < n-1:
-                suf[j] = suf[j+1] * nums[j+1]
-
-        # Get the output[i] = suf[i] * pre[j]
-        for i in range(n):
-            output[i] = pref[i] * suf[i]
+        for j in range(n - 2, -1, -1):
+            suffix[j] = suffix[j + 1] * nums[j + 1]
         
-        return output
+        return [prefix[i] * suffix[i] for i in range(n)]

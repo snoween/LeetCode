@@ -1,17 +1,18 @@
 class Solution:
     def permute(self, nums: list[int]) -> list[list[int]]:
         result = []
-        list_nums = []
+        path = []
+
         def backtrack():
-            if len(list_nums) == len(nums):
-                result.append(list_nums[:])
+            if len(path) == len(nums):
+                result.append(path[:])
                 return
             
             for num in nums:
-                if num not in list_nums:
-                    list_nums.append(num)
+                if num not in path:
+                    path.append(num)
                     backtrack()
-                    list_nums.pop()
-        
+                    path.pop()
+            
         backtrack()
         return result

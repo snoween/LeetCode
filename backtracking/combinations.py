@@ -3,15 +3,19 @@ class Solution:
         result = []
         path = []
 
-        def backtrack(start):
+        def backtrack(num):
             if len(path) == k:
                 result.append(path[:])
                 return
             
-            for i in range(start, n + 1):
-                path.append(i)
-                backtrack(i + 1)
-                path.pop()
+            if num > n:
+                return
+            
+            path.append(num)
+            backtrack(num + 1)
+
+            path.pop()
+            backtrack(num + 1)
         
         backtrack(1)
         return result
