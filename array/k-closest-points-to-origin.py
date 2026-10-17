@@ -1,16 +1,16 @@
 class Solution:
-    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
-        def euclidean(points):
-            return (points[0] ** 2 + points[1] ** 2) 
+    def euclidean(self, x, y):
+        return x*x + y*y
 
-        dis_heap = []
-
+    def kClosest(self, points: list[list[int]], k: int) -> list[list[int]]:
+        pq = []
         for point in points:
-            dis_heap.append((euclidean(point), point))     
-
-        heapq.heapify(dis_heap)
-        output = []
-        for i in range(k):
-            output.append(heapq.heappop(dis_heap)[1])
+            x, y = point
+            heapq.heappush(pq, (self.euclidean(x, y), point))
         
-        return output
+        result = []
+        for _ in range(k):
+            _, coor = heapq.heappop(pq)
+            result.append(coor)
+
+        return result

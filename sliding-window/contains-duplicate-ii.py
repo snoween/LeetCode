@@ -1,15 +1,15 @@
 class Solution:
-    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
-        idx_dict = defaultdict(int)
+    def containsNearbyDuplicate(self, nums: list[int], k: int) -> bool:
+        """
+        Solution: check occurance
+        Time comp: O(N)
+        Space comp: O(1)
+        """
+        seenIndex = {}
 
         for i, num in enumerate(nums):
-            if num not in idx_dict:
-                idx_dict[num] = i
-            
-            else:
-                if i - idx_dict[num] <= k:
-                    return True
-                else:
-                    idx_dict[num] = i
+            if num in seenIndex and (i - seenIndex[num]) <= k:
+                return True
+            seenIndex[num] = i
         
         return False

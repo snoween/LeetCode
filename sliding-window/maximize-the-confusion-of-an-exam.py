@@ -1,21 +1,19 @@
 class Solution:
     def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
-        def find_max_len(input_char: str) -> int:
-            init_dict = Counter()
-            best_len = 0
-            
-            l = 0
-            for r, char in enumerate(answerKey):
-                init_dict[char] += 1
+        max_len = 0
+        max_freq = 0
+        freq = defaultdict(int)
+        l = 0
 
-                while init_dict[input_char] > k:               
-                    if answerKey[l] == input_char:
-                        init_dict[input_char] -= 1
-                    l += 1
+        for r, char in enumerate(answerKey):
+            freq[char] += 1
+            max_freq = max(max_freq, freq[char])
 
-                best_len = max(best_len, r-l+1)
+            # The char needs to be switched > k -> increase left
+            while (r-l+1) - max_freq > k:
+                freq[answerKey[l]] -= 1
+                l += 1
             
-            return best_len
-            
+            max_len = max(max_len, r-l+1)
         
-        return max(find_max_len('T'), find_max_len('F'))
+        return max_len

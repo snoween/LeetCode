@@ -3,13 +3,13 @@ class Solution:
         result = []
         path = []
 
-        def backtrack(start):
+        def backtrack(index):
             result.append(path[:])
 
-            for i in range(start, len(nums)):
+            for i in range(index, len(nums)):
                 path.append(nums[i])
                 backtrack(i + 1)
                 path.pop()
-                
+        
         backtrack(0)
         return result

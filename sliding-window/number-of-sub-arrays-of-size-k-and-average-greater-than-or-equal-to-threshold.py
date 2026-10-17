@@ -1,16 +1,17 @@
 class Solution:
-    def numOfSubarrays(self, arr: List[int], k: int, threshold: int) -> int:
-        curr_sum = 0
+    def numOfSubarrays(self, arr: list[int], k: int, threshold: int) -> int:
+        """
+        Solution: Sliding window with fixed size k
+        Calculate avg of subarray size k -> compare with threshold
+        """
+        currentSum = 0
         for i in range(k):
-            curr_sum += arr[i]
-        count = int(curr_sum >= threshold * k)
-        # count = 1 if avg curr_sum >= threshold else 0
+            currentSum += arr[i]
+        
+        count = int((currentSum / k) >= threshold)
 
-        # for loop (k, len(nums))
-        for i in range(k, len(arr)):
-            # Update curr_sum: + right ele, - left ele
-            curr_sum = curr_sum + arr[i] - arr[i-k]
-            # Update count
-            count += int(curr_sum >= threshold * k)
+        for j in range(k, len(arr)):
+            currentSum = currentSum + arr[j] - arr[j - k]
+            count += int((currentSum / k) >= threshold)
         
         return count
