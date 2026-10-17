@@ -5,9 +5,7 @@ class Solution:
         for i in range(0, len(li_s), 2*k):
             l, r = i, i + (k - 1)
 
-            if r < len(li_s):
-                pass   
-            else:
+            if r >= len(li_s):
                 r = len(li_s) - 1
 
             while l < r:
