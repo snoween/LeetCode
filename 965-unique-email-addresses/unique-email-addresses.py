@@ -12,10 +12,8 @@ class Solution:
 
         for email in emails:
             # Split name and domain
-            parts = email.split('@')
-            local = parts[0]
-            domain = parts[1]
-
+            local, domain = email.split('@')
+            
             # clean name
             localParts = local.split('+')
             cleanEmail = localParts[0].replace('.', '')
