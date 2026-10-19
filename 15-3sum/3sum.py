@@ -11,18 +11,18 @@ class Solution:
 
         nums.sort()
         result = []
-        for i, num in enumerate(nums):
-            if i > 0 and num == nums[i - 1]:
+        for i, curr in enumerate(nums):
+            if i > 0 and curr == nums[i - 1]:
                 continue
 
             left, right = i + 1, len(nums) - 1
             while left < right:
-                if nums[left] + nums[right] + num > 0:
+                if nums[left] + nums[right] + curr > 0:
                     right -= 1
-                elif nums[left] + nums[right] + num < 0:
+                elif nums[left] + nums[right] + curr < 0:
                     left += 1
                 else:
-                    result.append([num, nums[left], nums[right]])
+                    result.append([curr, nums[left], nums[right]])
                     left += 1
                     right -= 1
 
