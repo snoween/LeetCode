@@ -2,7 +2,10 @@ class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
         """
         Solution: sliding window with k elements
-        - shrink the window with larger edge by using the conditions 
+        - the init window will be the whole array
+        - shrink the window until it reaches size k
+        - calculate the value of left and right pointers 
+        -> move the farther pointer
         """
 
         left, right = 0, len(arr) - 1
@@ -16,4 +19,3 @@ class Solution:
                 left += 1
         
         return arr[left:right + 1]
-
