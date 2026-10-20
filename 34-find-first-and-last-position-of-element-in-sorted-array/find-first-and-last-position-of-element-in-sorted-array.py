@@ -7,10 +7,8 @@ class Solution:
 
         def lowerBound(arr, target):
             left, right = 0, len(arr)
-
             while left < right:
                 middle = left + (right - left) // 2
-
                 if arr[middle] >= target:
                     right = middle
                 else:
@@ -20,10 +18,8 @@ class Solution:
         
         def upperBound(arr, target):
             left, right = 0, len(arr)
-
             while left < right:
                 middle = left + (right - left) // 2
-
                 if arr[middle] > target:
                     right = middle
                 else:
