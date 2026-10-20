@@ -13,9 +13,9 @@ class Solution:
         while left <= right:
             middle = left + (right - left) // 2
 
-            if guess(middle) == 1:
+            if guess(middle) > 0:
                 left = middle + 1
-            elif guess(middle) == -1:
+            elif guess(middle) < 0:
                 right = middle - 1
             else:
                 return middle
