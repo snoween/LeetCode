@@ -13,7 +13,6 @@ class Solution:
                     right = middle
                 else:
                     left = middle + 1
-            
             return left 
         
         def upperBound(arr, target):
@@ -24,7 +23,6 @@ class Solution:
                     right = middle
                 else:
                     left = middle + 1
-            
             return left
         
         left = lowerBound(nums, target)
