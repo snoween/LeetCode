@@ -8,17 +8,12 @@ class Solution:
             return x
 
         left, right = 1, x
-        ans = 0
         while left < right:
-            middle = left + (right - left) // 2
+            middle = left + (right - left + 1) // 2     # plus 1 to round up
 
-            # check if middle ^ 2 == x
-            if middle != 0 and middle == x // middle:
-                return middle
-            elif middle != 0 and middle > x // middle:
-                right = middle
+            if middle > x // middle:
+                right = middle - 1
             else:
-                ans = middle
-                left = middle + 1
-        
-        return ans
+                left = middle 
+
+        return left
