@@ -3,6 +3,7 @@ class Solution:
         """
         Solution: Binary search
         - Find the breaking point
+        - Always compare nums[mid] vs nums[right]
         """
         left, right = 0, len(nums) - 1
 
