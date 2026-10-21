@@ -1,5 +1,8 @@
 class Solution:
     def search(self, nums: list[int], target: int) -> int:
+        """
+        Solution: Binary search, rotated array
+        """
         left, right = 0, len(nums) - 1
 
         while left <= right:
