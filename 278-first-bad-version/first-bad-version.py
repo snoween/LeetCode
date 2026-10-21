@@ -6,7 +6,7 @@ class Solution:
         """
         Solution: binary search, find upper bound
         """
-        left, right = 0, n
+        left, right = 1, n
 
         while left < right:
             middle = left + (right - left) // 2
