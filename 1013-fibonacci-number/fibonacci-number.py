@@ -7,7 +7,6 @@ class Solution:
         - Time comp: O(N)
         - Space comp: O(N)
         """
-        
         if n == 0:
             return 0
         if n == 1:
