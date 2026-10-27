@@ -7,7 +7,7 @@ class Solution:
         - Time comp: O(N)
         - Space comp: O(N)
         """
-        if n <= 1:
+        if n <= 2:
             return n
         
         dp = [0] * (n + 1)
