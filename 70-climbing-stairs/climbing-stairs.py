@@ -1,20 +1,19 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
         """
-        Solution: DP - bottom up
-        - Base case: way(1) = 1, way(2) = 2
-        - Formula: there are 2 ways to come to step i-th: way(i) = way(i - 1) + way(i - 2)
-        - Time comp: O(N)
-        - Space comp: O(1)
+        Solution: DP - top down
+        Base case: when have less than 2 steps -> return it, 1 step has 1 way, 2 steps = 2 ways (move 1->1 step, or move 2 steps)
+        Formula: there are 2 ways to move to step i-th: move 1 step or 2 steps
+        ways(i) = way(i - 1) + ways(i - 2)
         """
-        if n <= 2:
-            return n
-        
-        oneStep = 2
-        twoStep = 1
-        for i in range(3, n + 1):
-            currentStep = oneStep + twoStep
-            twoStep = oneStep
-            oneStep = currentStep
+        memo = {}
 
-        return oneStep
+        def dp(steps):
+            if steps <= 2:
+                return steps
+            if steps not in memo:
+                memo[steps] = dp(steps - 1) + dp(steps - 2)
+            
+            return memo[steps]
+        
+        return dp(n)
