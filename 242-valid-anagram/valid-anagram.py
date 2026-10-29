@@ -6,19 +6,16 @@ class Solution:
         if len(s) != len(t):
             return False
 
-        freqS = {}
-        freqT = {}
-
-        for charS in s:
-            if charS not in freqS:
-                freqS[charS] = 0
-            freqS[charS] += 1
+        def CreateDict(string: str) -> dict:
+            freq = {}
+            for char in string:
+                if char not in freq:
+                    freq[char] = 0
+                freq[char] += 1
+            return freq
         
-        for charT in t:
-            if charT not in freqT:
-                freqT[charT] = 0
-            freqT[charT] += 1
-        
+        freqS = CreateDict(s)
+        freqT = CreateDict(t)
         for key, value in freqS.items():
             if key not in freqT:
                 return False
