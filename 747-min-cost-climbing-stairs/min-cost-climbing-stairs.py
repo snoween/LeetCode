@@ -7,11 +7,13 @@ class Solution:
         ways[i] = min(ways[i - 1] + dp(i - 1), ways[i - 2] + dp(i - 2))
         """
         n = len(cost)
-        if n <= 1:
-            return 0
-        
-        dp = [0] * (n + 1)
+
+        moveOne = 0
+        moveTwo = 0
         for i in range(2, n + 1):
-            dp[i] = min(cost[i - 1] + dp[i - 1], cost[i - 2] + dp[i - 2])
+            current = min(cost[i - 1] + moveTwo, cost[i - 2] + moveOne)
+
+            moveOne = moveTwo
+            moveTwo = current
         
-        return dp[-1]
+        return moveTwo
