@@ -1,15 +1,23 @@
 class Solution:
     def searchInsert(self, nums: list[int], target: int) -> int:
-        left, right = 0, len(nums) - 1
+        """
+        Solution: Binary Search - lower bound
+        - If nums[middle] = target -> return
+        - Else -> shrink the range: 
+            - if num[mid] > target: -> right = mid, left += 1
+            -> return left
+        """
+        left, right = 0, len(nums)
 
-        while left <= right:
+        while left < right:
             middle = left + (right - left) // 2
 
-            if nums[middle] < target:
-                left = middle + 1
-            elif nums[middle] > target:
-                right = middle - 1
-            else:
+            if nums[middle] == target:
                 return middle
-        
+            
+            if nums[middle] > target:
+                right = middle
+            else:
+                left += 1
+            
         return left
