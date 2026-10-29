@@ -7,13 +7,12 @@ class Solution:
         - Time comp: O(N)
         - Space comp: O(N)
         """
-        memo = {}
+        if n <= 1:
+            return n
+
+        dp = [0] * (n + 1)
+        dp[1] = 1
+        for i in range(2, n + 1):
+            dp[i] = dp[i - 2] + dp[i - 1]
         
-        def dp(num):
-            if num <= 1:
-                return num
-            if num not in memo:
-                memo[num] = dp(num - 1) + dp(num - 2)
-            return memo[num]
-        
-        return dp(n)
+        return dp[-1]
