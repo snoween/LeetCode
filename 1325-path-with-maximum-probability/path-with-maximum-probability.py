@@ -1,13 +1,13 @@
 class Solution:
     def maxProbability(self, n: int, edges: list[list[int]], succProb: list[float], start_node: int, end_node: int) -> float:
         """
-        Solution: Dji
+        Solution: Dji, max heap
         """
         # build graph
         graph = defaultdict(list)
-        for i in range(len(edges)):
-            graph[edges[i][0]].append((edges[i][1], succProb[i]))
-            graph[edges[i][1]].append((edges[i][0], succProb[i]))
+        for (u, v), w in zip(edges, succProb):
+            graph[u].append((v, w))
+            graph[v].append((u, w))
         
         # build dist
         dist = {i: 0.0 for i in range(n)}
@@ -42,4 +42,3 @@ class Solution:
                     heapq.heappush(heap, (new_prob, v))
         
         return dist[end_node]
-
