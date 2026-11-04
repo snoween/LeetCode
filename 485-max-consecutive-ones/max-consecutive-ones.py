@@ -20,4 +20,5 @@ class Solution:
                 max_ones = max(max_ones, ones)
                 ones = 0      
 
+        # final update in case where the array ends with 1
         return max(max_ones, ones)
