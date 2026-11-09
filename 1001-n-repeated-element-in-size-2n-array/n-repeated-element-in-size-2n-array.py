@@ -1,8 +1,11 @@
 class Solution:
     def repeatedNTimes(self, nums: list[int]) -> int:
-        target = len(nums) // 2
-        freq = Counter(nums)
+        """
+        - unique values -> if any nums appear more than once -> return
+        """
+        seen = set()
 
-        for key, val in freq.items():
-            if val == target:
-                return key
+        for num in nums:
+            if num in seen:
+                return num
+            seen.add(num)
