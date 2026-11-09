@@ -7,7 +7,6 @@ class Solution:
 
         count = 0
         for value in rods.values():
-            if len(value) == 3:
-                count += 1
+            count += int(len(value) == 3)
         
         return count
