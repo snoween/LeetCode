@@ -18,5 +18,4 @@ class Solution:
             if total == min_sum:
                 result.append(word)
 
-        print(result)
         return result
