@@ -8,7 +8,7 @@ class Solution:
         3: 3
         8: 4
         """
-        temp = nums.copy()
+        temp = [num for num in nums]
         temp.sort()
         smaller = defaultdict(int)
 
