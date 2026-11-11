@@ -6,6 +6,7 @@ class Solution:
         if n > m:
             return -1
         
+        # only run till m - n + 1, because the input str does not have enough length
         for i in range(m - n + 1):
             j = 0
             while j < n and haystack[i + j] == needle[j]:
