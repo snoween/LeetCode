@@ -4,14 +4,14 @@ class Solution:
         max_len = 0
 
         for num in set_num:
-            # find the starting number
+            # check if num is starting number or not
             if num - 1 not in set_num:
                 start = num
                 curr_len = 0
                 while start in set_num:
                     start += 1
                     curr_len += 1
-            
+
                 max_len = max(max_len, curr_len)
         
         return max_len
