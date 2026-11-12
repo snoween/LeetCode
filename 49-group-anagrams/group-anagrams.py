@@ -1,26 +1,18 @@
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        # Make a dict to store signature of word as key, word as val
-        group_ana = defaultdict(list)
-        # loop through strs
-        for word in strs:
-            # make a list 0s to store freq of each char
-            freq = [0] * 26
-            # loop through word
-            for char in word:
-                # get the index of that word by ord(char) - ord('a')
-                index = ord(char) - ord('a')
-                # update freq based on index
-                freq[index] += 1
-            
-            # update dict with key: tuple of the list freq, val: word
-            group_ana[tuple(freq)].append(word)
-        
-        output = []
-        # loop through all values in dict
-        for val in group_ana.values():
-            # append those val lists to output
-            output.append(val)
+    def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
+        """
+        - Need to group those words with same frequency of characters in a word
+        - Dictionary to group and look up, key is a tuple with length = 26
+        - tuple will present the frequency of characters in a word
+        """
+        freq = defaultdict(list)
 
-        # return output 
-        return output
+        for word in strs:
+            key = [0] * 26
+            for char in word:
+                idx = ord(char) - ord('a')
+                key[idx] += 1
+            
+            freq[tuple(key)].append(word)
+        
+        return [lst_word for lst_word in freq.values()]
