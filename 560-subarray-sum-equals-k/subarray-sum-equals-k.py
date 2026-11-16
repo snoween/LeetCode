@@ -17,7 +17,7 @@ class Solution:
             if prefix_start in prefix_count:
                 count += prefix_count[prefix_start]
             
-            # add curr_sum to hashmap for future check
+            # update curr_sum in hashmap if found, else its val = 0, for future check
             prefix_count[curr_sum] = prefix_count.get(curr_sum, 0) + 1
         
         return count
