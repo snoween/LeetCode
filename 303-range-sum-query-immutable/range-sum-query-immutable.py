@@ -1,13 +1,14 @@
 class NumArray:
-
+    """
+    Solution: prefix sum, sum range
+    """
     def __init__(self, nums: list[int]):
         n = len(nums)
         self.prefix = [0] * n
-        for i in range(n):
-            if i > 0:
-                self.prefix[i] = self.prefix[i - 1] + nums[i]
-            else:
-                self.prefix[i] = nums[i]
+        self.prefix[0] = nums[0]
+
+        for i in range(1, n):
+            self.prefix[i] = self.prefix[i - 1] + nums[i]
 
     def sumRange(self, left: int, right: int) -> int:
         if left == 0:
