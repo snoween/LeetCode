@@ -14,28 +14,27 @@ class Solution:
         m, n = len(matrix), len(matrix[0])
         count = 0
 
-        # Calculate the prefix sum of each row in the matrix
+        # calculate the prefix sum for each row
         for i in range(m):
             for j in range(1, n):
-                matrix[i][j] += matrix[i][j - 1] 
+                matrix[i][j] += matrix[i][j - 1]
         
-        # Calculate the sum between 2 fixed columns
+        # Calculate the sum of the matrix between 2 columns
         for c1 in range(n):
             for c2 in range(c1, n):
                 curr_sum = 0
-                # define frequency hashmap, renew when (c1, c2) is changed
                 prefix_count = {0: 1}
 
-                # calculate the sum from c1 -> c2
                 for r in range(m):
-                    # update curr_sum 
+                    # curr_sum = prefix[right] - prefix[left - 1]
                     curr_sum += matrix[r][c2] - (matrix[r][c1 - 1] if c1 > 0 else 0)
-                    # calculate the starting prefix, prefix[end] - prefix[start] = target
-                    prefix_start = curr_sum - target
-                    if prefix_start in prefix_count:
-                        count += prefix_count[prefix_start]
+                    prefix_left = curr_sum - target
 
-                    # update frequency of curr_sum to +1
-                    prefix_count[curr_sum] =  prefix_count.get(curr_sum, 0) + 1
-        
+                    # update count if valid sum of prefix[right], prefix[left]
+                    if prefix_left in prefix_count:
+                        count += prefix_count[prefix_left]
+                    
+                    # add curr_sum to prefix_count
+                    prefix_count[curr_sum] = prefix_count.get(curr_sum, 0) + 1
+
         return count
