@@ -30,7 +30,7 @@ class Solution:
                 for r in range(m):
                     # update curr_sum 
                     curr_sum += matrix[r][c2] - (matrix[r][c1 - 1] if c1 > 0 else 0)
-                    # calculate the starting prefix
+                    # calculate the starting prefix, prefix[end] - prefix[start] = target
                     prefix_start = curr_sum - target
                     if prefix_start in prefix_count:
                         count += prefix_count[prefix_start]
