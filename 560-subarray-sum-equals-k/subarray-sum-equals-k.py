@@ -6,19 +6,16 @@ class Solution:
         - Check if prefix[left] in hashmap or not
         - Update prefix[curr_sum] = 1 to hashmap
         """
-        n = len(nums)
         count = 0
-        prefix_count = {0: 1}
         curr_sum = 0
+        prefix_count = {0: 1}
+
         for num in nums:
             curr_sum += num
-            # check if prefix_start in hashmap
             prefix_start = curr_sum - k
-            if prefix_start in prefix_count:
+            if prefix_start in prefix_count:    # valid sum
                 count += prefix_count[prefix_start]
             
-            # update curr_sum in hashmap if found, else its val = 0, for future check
             prefix_count[curr_sum] = prefix_count.get(curr_sum, 0) + 1
         
         return count
-        
