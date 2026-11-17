@@ -4,7 +4,7 @@ class Solution:
         Solution: prefix sum - count sum = target
         - Calculate the prefix sum
         - Check if prefix[left] in hashmap or not
-        - Update prefix[curr_sum] = 1 to hashmap
+        - Update prefix[curr_sum] = 0 to hashmap if not found, else +1
         """
         count = 0
         curr_sum = 0
