@@ -1,23 +1,18 @@
 class Solution:
     def longestPalindrome(self, s: str) -> int:
-        # get the freq of all char
+        """
+        Solution: counter
+        - Count the frequency of all characters in the list
+        - The output should contain all characters withh even frequencies + max(odd_freq)
+        """
         freq = Counter(s)
-        # set count_odd = 0
-        count_odd = 0
-        # set max_len = 0
-        max_len = 0
+        odd_count = 0
+        length = len(s)
 
-        # loop through values of counter
-        for val in freq.values():
-            # if val is odd:
-            if val % 2 != 0:
-                # update count odd
-                count_odd += 1
-            # update max len
-            max_len += val
-                
-        # return max len + max odd
-        if count_odd == 0:
-            return max_len
-
-        return max_len - count_odd + 1
+        for value in freq.values():
+            odd_count += int(value % 2 != 0)
+        
+        if odd_count == 0:
+            return length
+            
+        return length - odd_count + 1
