@@ -9,11 +9,8 @@ class Solution:
         for word in words2:
             curr_freq = Counter(word)
             for key, value in curr_freq.items():
-                if key not in target:
+                if key not in target or value > target[key]:
                     target[key] = value
-                elif value > target[key]:
-                    target[key] = value
-
 
         def compare_str(word_freq: str):
             for key, value in target.items():
