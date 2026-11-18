@@ -5,7 +5,7 @@ class Solution:
         - Build a hashmap for list of words of words2, with the frequency is the maximum freq of that character in the whole list of words of words 2
         - Compare each word in words1 with that hashmap of words2
         """
-        target = Counter(words2[0])
+        target = defaultdict(int)
         for word in words2:
             curr_freq = Counter(word)
             for key, value in curr_freq.items():
