@@ -12,7 +12,7 @@ class Solution:
                 if key not in target or value > target[key]:
                     target[key] = value
 
-        def compare_str(word_freq: str):
+        def compare_freq(word_freq: str):
             for key, value in target.items():
                 if key not in word_freq or value > word_freq[key]:
                     return False
@@ -21,7 +21,7 @@ class Solution:
         result = []
         for word in words1:
             word_freq = Counter(word)
-            if compare_str(word_freq):
+            if compare_freq(word_freq):
                 result.append(word)
         
         return result
