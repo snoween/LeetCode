@@ -1,30 +1,27 @@
 class Solution:
-    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        row, col = len(matrix), len(matrix[0])
+    def searchMatrix(self, matrix: list[list[int]], target: int) -> bool:
+        """
+        Solution: binary search
+        - Take left = 0, right = rows * cols - 1
+        - Calculate middle
+        - Reverse middle to: row = middle // cols, col = middle % cols
+        - Compare matrix[row][col] vs target
+        """
+        rows, cols = len(matrix), len(matrix[0])
+        left = 0
+        right = rows * cols - 1
 
-        l = 0
-        r = row - 1
-        ans = 0
-        # tim kiem tren hang nao
-        while l <= r:
-            m = l + (r - l) // 2
-            if matrix[m][0] <= target:
-                ans = m
-                l = m + 1
+        while left <= right:
+            middle = left + (right - left) // 2
+
+            row = middle // cols
+            col = middle % cols
+    
+            if matrix[row][col] > target:
+                right = middle - 1
+            elif matrix[row][col] < target:
+                left = middle + 1
             else:
-                r = m - 1
-
-        # tim kiem tren hang ans
-        l = 0
-        r = col-1
-
-        while l <= r:
-            m = l + (r - l) // 2
-            if matrix[ans][m] == target:
                 return True
-            if matrix[ans][m] > target:
-                r = m - 1
-            else:
-                l = m + 1
-        
+
         return False

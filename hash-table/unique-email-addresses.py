@@ -1,15 +1,23 @@
 class Solution:
     def numUniqueEmails(self, emails: list[str]) -> int:
-        uniqueMails = set()
+        """
+        Solution:
+        - Split the string into 2 parts: valid and domain, with '@'
+        - Clean local part: by replacing '.' with ''
+        - Split the local part into 2 parts: before - after the '+'
+        - Add those clean emails to a set -> return len(set)
+        """
 
-        for mail in emails:
-            local, domain = mail.split('@')
+        emailsSet = set()
 
-            # clean local part
-            local = local.split('+')[0]
-            local = local.replace('.', '')
-            # merge mail
-            uniqueMails.add(f'{local}@{domain}')
+        for email in emails:
+            # Split name and domain
+            local, domain = email.split('@')
+            
+            # clean name
+            localParts = local.split('+')
+            cleanEmail = localParts[0].replace('.', '')
+
+            emailsSet.add(f'{cleanEmail}@{domain}')
         
-        return len(uniqueMails)
-        
+        return len(emailsSet)

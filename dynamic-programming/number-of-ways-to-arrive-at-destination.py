@@ -1,25 +1,44 @@
 class Solution:
-    def countPaths(self, n: int, roads: List[List[int]]) -> int:
-        # build graph with weight of each node
+    def countPaths(self, n: int, roads: list[list[int]]) -> int:
+        """
+        Solution: DJI
+        - Shortest time -> min heap
+        - if dist[n - 1] = min time -> count + 1
+        """
+        mod = 10 ** 9 + 7
+        # build graph
+        graph = defaultdict(list)
+        for u, v, w in roads:
+            graph[u].append((v, w))
+            graph[v].append((u, w))
+        
+        # build dist
+        dist = {i: float('inf') for i in range(n)}
+        dist[0] = 0
+        
+        # build number of paths
+        path = {i: 0 for i in range(n)}
+        path[0] = 1     # have 1 way to go to the starting point
 
-        # build dist for all nodes = inf
+        # build min heap, init val = (dist starting node, node)
+        heap = [(0, 0)]
 
-        # push to heap the node has dist = 0 (starting node = 0)
+        # loop through heap
+        while heap:
+            curr_dist, curr_node = heapq.heappop(heap)
+            
+            # check if curr_dist > dist[curr_node] -> continue
+            if curr_dist > dist[curr_node]:
+                continue
 
-        # build a function môn stack to check current path from 0 - n-1 has smaller val or not
-        # loop while valid heap
-            # get curr dist, curr node = heappop
+            # update distance to adj nodes
+            for v, w in graph[curr_node]:
+                new_dist = curr_dist + w
+                if new_dist < dist[v]:
+                    dist[v] = new_dist
+                    path[v] = path[curr_node]       # path[v] = take all paths from u
+                    heapq.heappush(heap, (new_dist, v))
+                elif new_dist == dist[v]:
+                    path[v] = (path[v] + path[curr_node]) % mod
 
-            # push curr dist to result
-            # if curr dist > dist[node] -> continue
-
-            # loop through node neighbors 
-                # check if curr dist + weight < dist[negihbor]
-                    # replace dist[neighbor]
-                    # push dist neighbor, neighbor to heap
-
-        # set count = 1
-
-        # curr min = heappop result
-
-        # loop while heappop result = curr min -> count + 1
+        return path[n - 1]

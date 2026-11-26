@@ -1,11 +1,20 @@
 class Solution:
     def fib(self, n: int) -> int:
-        def calculateFib(n):
-            if n == 0:
-                return 0
-            elif n == 1:
-                return 1
-            else:
-                return calculateFib(n - 2) + calculateFib(n - 1)
+        """
+        Solution: DP - top down
+        - Base case: fib(0) = 0, fib(1) = 1
+        - Formula: fib(i) = fib(i - 1) + fib(i - 2)
+        - Time comp: O(N)
+        - Space comp: O(N)
+        """
+        if n <= 1:
+            return n
+
+        prevOne = 1
+        prevTwo = 0
+        for i in range(2, n + 1):
+            current = prevTwo + prevOne
+            prevTwo = prevOne
+            prevOne = current
         
-        return calculateFib(n)
+        return prevOne

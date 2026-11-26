@@ -3,17 +3,16 @@
 
 class Solution:
     def firstBadVersion(self, n: int) -> int:
-        left = 0
-        right = n
-        result = 0
+        """
+        Solution: binary search, find upper bound
+        """
+        left, right = 1, n
 
-        while left <= right:
+        while left < right:
             middle = left + (right - left) // 2
-
             if isBadVersion(middle):
-                result = middle
-                right = middle - 1
+                right = middle
             else:
                 left = middle + 1
-
-        return result
+        
+        return left

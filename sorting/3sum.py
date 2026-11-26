@@ -1,32 +1,37 @@
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
+        """
+        Solution: 2 pointers
+        - Sort the array
+        - To avoid duplicate:
+            - compare the current target vs prev target
+            - compare the next left num vs curr left num
+            - compare the next right num vs curr right num
+        """
+
         nums.sort()
-        output = []
-
-        for i, num in enumerate(nums):
-            if i > 0 and nums[i] == nums[i-1]:
+        result = []
+        for i, curr in enumerate(nums):
+            if i > 0 and curr == nums[i - 1]:
                 continue
-            
-            target = num
-            left = i + 1
-            right = len(nums) - 1
+
+            left, right = i + 1, len(nums) - 1
             while left < right:
-                if nums[left] + nums[right] > -target:
+                if nums[left] + nums[right] + curr > 0:
                     right -= 1
-                
-                elif nums[left] + nums[right] < -target:
+                elif nums[left] + nums[right] + curr < 0:
                     left += 1
-                
                 else:
-                    output.append([target, nums[left], nums[right]])
+                    result.append([curr, nums[left], nums[right]])
                     left += 1
                     right -= 1
 
-                    # Check if current left, right same as left-1, right+1
-                    while left < right and nums[left] == nums[left-1]:
+                    # check if next left num is equal to prev left num
+                    while left < right and nums[left] == nums[left - 1]:
                         left += 1
                     
-                    while left < right and nums[right] == nums[right+1]:
+                    # check right num 
+                    while left < right and nums[right] == nums[right + 1]:
                         right -= 1
-                        
-        return output
+
+        return result
