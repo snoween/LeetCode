@@ -1,21 +1,18 @@
 class Solution:
     def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
         """
-        Method: use tuple of freq of letters as keys, values are words that have the 
-        same number of letters
+        - Need to group those words with same frequency of characters in a word
+        - Dictionary to group and look up, key is a tuple with length = 26
+        - tuple will present the frequency of characters in a word
         """
         freq = defaultdict(list)
 
         for word in strs:
-            count = [0] * 26
+            key = [0] * 26
             for char in word:
                 idx = ord(char) - ord('a')
-                count[idx] += 1
-            freq[tuple(count)].append(word)
-        
-        result = []
-        for list_words in freq.values():
-            result.append(list_words)
-        
-        return result
+                key[idx] += 1
             
+            freq[tuple(key)].append(word)
+        
+        return [lst_word for lst_word in freq.values()]

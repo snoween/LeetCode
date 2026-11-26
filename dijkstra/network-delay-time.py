@@ -3,27 +3,29 @@ class Solution:
         # build graph
         graph = defaultdict(list)
         for u, v, w in times:
-            graph[u].append((v, w))
+            graph[u].append((w, v))
         
-        # build distance array
-        dist = {i : float(inf) for i in range(1, n + 1)}
+        # build dist 
+        dist = {i: float('inf') for i in range(1, n + 1)}
         dist[k] = 0
 
-        # build init heap with starting point k
+        # min heap
         heap = [(0, k)]
+
         while heap:
             curr_dist, curr_node = heapq.heappop(heap)
 
-            # if the current distance > last distance of that node -> continue
             if curr_dist > dist[curr_node]:
                 continue
             
-            # loop through its adjacent nodes
-            for v, w in graph[curr_node]:
-                if dist[curr_node] + w < dist[v]:
-                    dist[v] = dist[curr_node] + w
-                    heapq.heappush(heap, (dist[v], v))
+            for w, v in graph[curr_node]:
+                new_dist = curr_dist + w
+                if new_dist < dist[v]:
+                    dist[v] = new_dist
+                    heapq.heappush(heap, (new_dist, v))
         
-        # get max_time 
-        max_time = max(dist.values())
-        return max_time if max_time != inf else -1
+        min_time = max(dist.values())
+        if min_time == float('inf'):
+            return -1
+        
+        return min_time

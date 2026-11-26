@@ -1,17 +1,24 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        prefix_count = {0: 1}
-        current_sum = 0
+        """
+        Solution: Prefix sum - hashmap
+        - Subarray might have different lengths
+        - The total of a subarray -> prefix sum: prefix[right] - prefix[left - 1] = k
+        - prefix[right] = sum(subarray)
+        -> save prefix[left - 1] in hashmap to find
+        - if found prefix[left - 1] in hashmap -> have a valid sum = k -> update count
+        """
+        prefix_count = {0: 1}   # base case: sum = 0 appears 1 time
         count = 0
+        curr_sum = 0
 
         for num in nums:
-            current_sum += num
-            # check if current_sum - k in dict or not
-            last_prefix = current_sum - k
-            if last_prefix in prefix_count:
-                count += prefix_count[last_prefix]
+            curr_sum += num
+            prefix_left = curr_sum - k
+
+            if prefix_left in prefix_count:
+                count += prefix_count[prefix_left]
             
-            # if current_sum not in dict -> default val = 0, else -> get value of that key 
-            prefix_count[current_sum] = prefix_count.get(current_sum, 0) + 1
+            prefix_count[curr_sum] = prefix_count.get(curr_sum, 0) + 1
         
         return count

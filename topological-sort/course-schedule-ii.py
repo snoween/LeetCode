@@ -1,60 +1,36 @@
 class Solution:
-    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+    def findOrder(self, numCourses: int, prerequisites: list[list[int]]) -> list[int]:
         """
-        - Method: DFS (3 states)
-        - Time comp: O(V + E)
-        - Space comp: O(V + E)
+        Solution: topo sort
+        1. Build graph, in degree
+        2. Build queue
+        3. BFS through queue. Append the node to result array after popleft from queue
+        To check if cannot complete all courses or not -> check if cycle, or count = numCourses or not
         """
+        # build graph
+        graph = defaultdict(list)
+        in_degree = defaultdict(int)
 
-        # set up the adjacent dictionary, with key = prereq, val = course
-        adj = defaultdict(list)
-        for course, prereq in prerequisites:
-            adj[prereq].append(course)
-
-        # set up list visit with numCourses elements of 0
-        visit = [0] * numCourses
-
-        # empty list result to store courses
+        for a, b in prerequisites:
+            graph[b].append(a)
+            in_degree[a] += 1
+        
+        # build queue
+        queue = deque()
+        for i in range(numCourses):
+            if in_degree[i] == 0:
+                queue.append(i)
+        
+        # BFS through queue
         result = []
 
-        # dfs function to check state of a node -> return bool
-        def dfs(node) -> bool:
-            # 0: not visit; 1: visiting; 2: visited
-            # Check state of the node
-            # If state is 1 -> has cycle -> return False
-            if visit[node] == 1:
-                return False
+        while queue:
+            curr_node = queue.popleft()
+            result.append(curr_node)
 
-            # if state is 2 -> done visiting -> return True
-            if visit[node] == 2:
-                return True
-
-            # if state is 0 -> not visit -> change state to 1
-            visit[node] = 1
-
-            # loop through all neighbors of current node
-            for neighbor in adj[node]:
-                # if any of the neighbors has cycle -> stop checking
-                if not dfs(neighbor):
-                    return False
-            
-            # if all neighbors are valid -> change state of current node to 2
-            visit[node] = 2
-
-            # append that node to result
-            result.append(node)
-
-            # return True
-            return True
+            for adj in graph[curr_node]:
+                in_degree[adj] -= 1
+                if in_degree[adj] == 0:
+                    queue.append(adj)
         
-        # loop through all courses
-        for i in range(numCourses):
-            # check if the state in visit of that course
-            # if not valid state -> has cycle -> return []
-            if visit[i] == 0:
-                if not dfs(i):
-                    return []
-        
-        # return reverse result - bc DFS returns nodes from end -> start
-        result.reverse()
-        return result
+        return result if len(result) == numCourses else []

@@ -1,15 +1,12 @@
 class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
+    def twoSum(self, nums: list[int], target: int) -> list[int]:
         """
-        Time comp: O(N)
-        Space comp: O(N)
-        Method: hashmap
+        - Check if the difference between target and nums[i] in dict or not
         """
-        num_idx = defaultdict(int)
+        seen = defaultdict(int)
 
-        for i, curr in enumerate(nums):
-            # Calculate the difference
-            diff = target - curr
-            if num_idx and diff in num_idx:
-                return [num_idx[diff], i]
-            num_idx[curr] = i
+        for i, num in enumerate(nums):
+            diff = target - num
+            if diff in seen:
+                return [i, seen[diff]]
+            seen[num] = i

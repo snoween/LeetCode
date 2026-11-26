@@ -1,33 +1,31 @@
 class Solution:
-    def search(self, nums: List[int], target: int) -> int:
+    def search(self, nums: list[int], target: int) -> int:
         """
-        Idea: Binary search
-        - Find left rotated part
-        - If num middle < num right -> check if target in right side or not
-        - else: check if target in left side or not
-        - Use binary search to check each part
-        
+        Solution: binary search, rotated array
+        Time comp: O(logN)
+        Space comp: O(1)
+        - Check if target is in half left or half right of the array
         """
+
         left, right = 0, len(nums) - 1
 
         while left <= right:
             middle = left + (right - left) // 2
 
-            # check if num middle = target
             if nums[middle] == target:
                 return middle
-            
-            # target in half right
-            if nums[middle] <= nums[right]:
-                if nums[middle] < target <= nums[right]:
-                    left = middle + 1
-                else:
-                    right = middle - 1
-            # if target in half left
-            else:   
+
+            # Check if half left is sorted
+            if nums[left] <= nums[middle]:
                 if nums[left] <= target < nums[middle]:
                     right = middle - 1
                 else:
                     left = middle + 1
+            # else, half right is sorted
+            else:
+                if nums[middle] < target <= nums[right]:
+                    left = middle + 1
+                else:
+                    right = middle - 1
         
         return -1
